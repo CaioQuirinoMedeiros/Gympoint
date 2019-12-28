@@ -2,6 +2,8 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
+import './database'
+
 class App {
   constructor() {
     this.server = express();
