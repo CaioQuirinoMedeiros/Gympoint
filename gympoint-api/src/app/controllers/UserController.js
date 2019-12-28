@@ -13,7 +13,7 @@ class UserController {
 
       const { id, name, email } = user;
 
-      return res.status(200).send({ id, name, email });
+      return res.status(201).send({ id, name, email });
     } catch (err) {
       console.error(err);
       return res.status(400).send({ error: 'Erro ao criar usuário' });

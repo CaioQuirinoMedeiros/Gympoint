@@ -12,7 +12,7 @@ class StudentController {
 
       const student = await Student.create(req.body);
 
-      return res.status(200).send(student);
+      return res.status(201).send(student);
     } catch (err) {
       console.error(err);
       return res.status(400).send({ error: 'Erro ao criar aluno' });

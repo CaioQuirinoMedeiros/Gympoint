@@ -19,7 +19,7 @@ class SessionController {
 
       const token = await user.generateJWT();
 
-      return res.status(200).send({ user, token });
+      return res.status(201).send({ user, token });
     } catch (err) {
       console.error(err);
       return res.status(400).send({ error: 'Erro ao se autenticar' });
