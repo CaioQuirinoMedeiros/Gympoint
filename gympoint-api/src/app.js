@@ -2,7 +2,9 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
-import './database'
+import './database';
+
+import routes from './routes';
 
 class App {
   constructor() {
@@ -18,7 +20,9 @@ class App {
     this.server.use(cors());
   }
 
-  routes() {}
+  routes() {
+    this.server.use(routes);
+  }
 
   exceptionHandler() {
     this.server.use(async (err, req, res, next) => {
