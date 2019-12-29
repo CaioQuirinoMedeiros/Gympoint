@@ -1,14 +1,24 @@
 import Enrollment from '../models/Enrollment';
+import Student from '../models/Student';
+import Plan from '../models/Plan';
+
+import MailService from '../../services/Mail';
 
 class EnrollmentController {
   async store(req, res) {
     const { start_date, student_id, plan_id } = req.body;
+
     try {
       const enrollment = await Enrollment.create({
         start_date,
         student_id,
         plan_id
       });
+
+      const student = await Student.findByPk(student_id);
+      const plan = await Plan.findByPk(plan_id);
+
+      await MailService.newEnrollment(student, plan);
 
       return res.status(201).send(enrollment);
     } catch (err) {
@@ -30,6 +40,7 @@ class EnrollmentController {
 
   async show(req, res) {
     const { enrollmentId } = req.params;
+
     try {
       const enrollment = await Enrollment.findByPk(enrollmentId, {
         include: [{ all: true }]
@@ -50,6 +61,7 @@ class EnrollmentController {
 
   async update(req, res) {
     const { enrollmentId } = req.params;
+
     try {
       const enrollment = await Enrollment.findByPk(enrollmentId);
 
@@ -70,7 +82,18 @@ class EnrollmentController {
 
   async destroy(req, res) {
     const { enrollmentId } = req.params;
+
     try {
+      const enrollment = await Enrollment.findByPk(enrollmentId);
+
+      if (!enrollment) {
+        return res
+          .status(404)
+          .send({ error: `Matrícula ${enrollmentId} não encontrada` });
+      }
+
+      await enrollment.destroy();
+
       return res.status(200).send();
     } catch (err) {
       console.error(err);
