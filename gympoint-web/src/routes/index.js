@@ -1,15 +1,17 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Login from '~/pages/Login'
+import PrivateRoutes from './private'
+import GuestRoutes from './guest'
+import NotFound from '~/pages/NotFound'
 
 export default function Routes() {
   return (
     <Switch>
-      <Route path='/' exact component={Login} />
-      <Route path='/login' component={Login} />
-
-      <Route path='*' component={Login} />
+      <Route path='/guest' component={GuestRoutes} />
+      <Route path='/app' component={PrivateRoutes} />
+      <Redirect to="/guest" />
+      <Route path='*' component={NotFound} />
     </Switch>
   )
 }
