@@ -3,12 +3,11 @@ import Student from '../models/Student';
 class StudentController {
   async store(req, res) {
     try {
-      console.log(req.body);
-      // const studentExists = await Student.findByEmail(req.body.email);
+      const studentExists = await Student.findByEmail(req.body.email);
 
-      // if (studentExists) {
-      //   return res.status(400).send({ error: 'E-mail já registrado' });
-      // }
+      if (studentExists) {
+        return res.status(400).send({ error: 'E-mail já registrado' });
+      }
 
       const student = await Student.create(req.body);
 
