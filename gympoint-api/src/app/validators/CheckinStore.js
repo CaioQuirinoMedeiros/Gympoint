@@ -38,7 +38,7 @@ export default async (req, res, next) => {
     return next();
   } catch (err) {
     if (err.name === 'ValidationError') {
-      return res.status(400).send({ error: err });
+      return res.status(400).send({ error: err.message });
     } else {
       console.error(err);
       return res.status(400).send({ error: 'Validation error' });
