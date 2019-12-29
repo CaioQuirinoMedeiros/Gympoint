@@ -7,6 +7,7 @@ export default {
   inkLight: '#999',
   positive: '#42cb59',
   negative: '#de3b3b',
+  dimDark: '#c3c3c3',
   dim: '#e4e4e4',
   white: '#fff'
 }

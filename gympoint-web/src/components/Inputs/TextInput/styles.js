@@ -11,10 +11,20 @@ export const Input = styled.input`
   padding: 1rem;
   font-size: 1.4rem;
   border-radius: 5px;
+  transition: all 0.2s;
 
   &::placeholder {
     color: ${({ theme }) => theme.inkLight};
   }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.dimDark};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.ink};
+  }
+
 `
 
 export const Label = styled.label`

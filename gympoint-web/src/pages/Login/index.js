@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import AuthActions from '~/store/modules/auth/actions'
 
 import { Container, LoginWindow, Title, Input, Button } from './styles'
 
@@ -6,13 +9,13 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  React.useEffect(() => {
-    console.log('email: ', email)
-    console.log('password: ', password)
-  }, [email, password])
+  const loading = useSelector(({ auth }) => auth.loading)
+
+  const dispatch = useDispatch()
 
   function handleLogin() {
-    alert('opa')
+    console.log('OPA')
+    dispatch(AuthActions.signInRequest(email, password))
   }
 
   return (
@@ -32,7 +35,9 @@ function Login() {
           onChangeText={setPassword}
           placeholder='********'
         />
-        <Button onClick={handleLogin}>Entrar no sistema</Button>
+        <Button onClick={handleLogin} loading={loading} disabled={loading}>
+          Entrar no sistema
+        </Button>
       </LoginWindow>
     </Container>
   )

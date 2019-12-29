@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ToastContainer } from 'react-toastify'
+import 'dotenv/config'
 
 import '~/config/reactotron-config'
 import { store, persistor } from '~/store'
