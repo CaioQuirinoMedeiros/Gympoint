@@ -14,7 +14,7 @@ export function* signIn({ payload }) {
 
     yield put(AuthActions.signInSuccess(token, user))
   } catch (err) {
-    yield put(AuthActions.signFailure())
+    yield put(AuthActions.signInFailure())
   }
 }
 
@@ -30,7 +30,7 @@ export function* signUp({ payload }) {
 
     yield put(AuthActions.signUpSuccess())
   } catch (err) {
-    yield put(AuthActions.signFailure())
+    yield put(AuthActions.signUpFailure())
   }
 }
 
