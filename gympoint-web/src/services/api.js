@@ -8,10 +8,13 @@ console.log(apiConfig)
 const create = () => {
   const api = axios.create({ ...apiConfig })
 
-  const setAuthToken = userAuth =>
-    api.setHeader('Authorization', `Bearer ${userAuth}`)
+  const setAuthToken = token => {
+    api.defaults.headers.Authorization = `Bearer ${token}`
+  }
 
-  const removeAuthToken = () => api.deleteHeader('Authorization')
+  const removeAuthToken = () => {
+    api.defaults.headers.Authorization = ''
+  }
 
   // Authentication
 

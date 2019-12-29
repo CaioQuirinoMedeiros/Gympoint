@@ -34,9 +34,20 @@ export function* signUp({ payload }) {
   }
 }
 
-export function signOut() {}
+export function* signOut() {}
+
+export function* setToken({ payload }) {
+  if (!payload) return
+
+  const { token } = payload.auth
+
+  if (token) {
+    yield call(api.setAuthToken, token)
+  }
+}
 
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
   takeLatest(AuthTypes.SIGN_UP_REQUEST, signUp),
   takeLatest(AuthTypes.SIGN_OUT, signOut)
