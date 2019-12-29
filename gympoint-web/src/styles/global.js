@@ -4,11 +4,15 @@ import 'react-toastify/dist/ReactToastify.min.css'
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
-  * {
+  *,
+  *::before {
     padding: 0;
     margin: 0;
     outline: none;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
 
     &:focus {
       outline: none;
@@ -30,14 +34,28 @@ export default createGlobalStyle`
     }
   }
 
-  body, html, #root {
-    min-height: 100vh;
+  html {
+    font-size: 62.5%;
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 55%;
+    }
+    @media only screen and (max-width: 25em) {
+      font-size: 50%;
+    }
   }
 
   body {
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
     font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: ${({ theme }) => theme.ink};
+  }
+  
+  #root {
+    display: flex;
+    min-height: 100vh;
+
   }
 
   a {
@@ -49,6 +67,14 @@ export default createGlobalStyle`
     border: none;
     background: none;
     cursor: pointer;
+    color: inherit;
+  }
+
+  input {
+    border-style: solid;
+    outline: none;
+    font-family: inherit;
+    color: inherit;
   }
 
   ul {
