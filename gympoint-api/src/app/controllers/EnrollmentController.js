@@ -15,10 +15,7 @@ class EnrollmentController {
         plan_id
       });
 
-      const student = await Student.findByPk(student_id);
-      const plan = await Plan.findByPk(plan_id);
-
-      await MailService.newEnrollment(student, plan);
+      await MailService.newEnrollment(req.student, req.plan);
 
       return res.status(201).send(enrollment);
     } catch (err) {
@@ -39,17 +36,17 @@ class EnrollmentController {
   }
 
   async show(req, res) {
-    const { enrollmentId } = req.params;
+    const { enrollment_id } = req.params;
 
     try {
-      const enrollment = await Enrollment.findByPk(enrollmentId, {
+      const enrollment = await Enrollment.findByPk(enrollment_id, {
         include: [{ all: true }]
       });
 
       if (!enrollment) {
         return res
           .status(404)
-          .send({ error: `Matrícula ${enrollmentId} não encontrada` });
+          .send({ error: `Matrícula ${enrollment_id} não encontrada` });
       }
 
       return res.status(200).send(enrollment);
@@ -60,15 +57,15 @@ class EnrollmentController {
   }
 
   async update(req, res) {
-    const { enrollmentId } = req.params;
+    const { enrollment_id } = req.params;
 
     try {
-      const enrollment = await Enrollment.findByPk(enrollmentId);
+      const enrollment = await Enrollment.findByPk(enrollment_id);
 
       if (!enrollment) {
         return res
           .status(404)
-          .send({ error: `Matrícula ${enrollmentId} não encontrada` });
+          .send({ error: `Matrícula ${enrollment_id} não encontrada` });
       }
 
       await enrollment.update(req.body);
@@ -81,15 +78,15 @@ class EnrollmentController {
   }
 
   async destroy(req, res) {
-    const { enrollmentId } = req.params;
+    const { enrollment_id } = req.params;
 
     try {
-      const enrollment = await Enrollment.findByPk(enrollmentId);
+      const enrollment = await Enrollment.findByPk(enrollment_id);
 
       if (!enrollment) {
         return res
           .status(404)
-          .send({ error: `Matrícula ${enrollmentId} não encontrada` });
+          .send({ error: `Matrícula ${enrollment_id} não encontrada` });
       }
 
       await enrollment.destroy();
