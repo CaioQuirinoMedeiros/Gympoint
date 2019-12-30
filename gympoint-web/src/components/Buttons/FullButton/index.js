@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from './styles'
+import { Button, Icon } from './styles'
 
-function FullButton({ children, loading, ...rest }) {
-  return <Button {...rest}>{loading ? 'Carregando...': children }</Button>
+function FullButton({ children, loading, icon, ...rest }) {
+  return (
+    <Button {...rest}>
+      {icon && <Icon icon={icon} />}
+      {loading ? 'Carregando...' : children}
+    </Button>
+  )
 }
 
 FullButton.propTypes = {
