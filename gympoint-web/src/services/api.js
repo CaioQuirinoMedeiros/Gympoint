@@ -20,11 +20,17 @@ const create = () => {
 
   const login = userAuth => api.post('sessions', userAuth)
 
+  // Students
+
+  const getStudents = () => api.get('students')
+
   return {
     setAuthToken,
     removeAuthToken,
 
-    login
+    login,
+
+    getStudents
   }
 }
 

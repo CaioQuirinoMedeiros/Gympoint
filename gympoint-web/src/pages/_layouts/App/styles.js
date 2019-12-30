@@ -9,4 +9,8 @@ export const Container = styled.div`
 export const Content = styled.main`
   flex: 1;
   background: ${({ theme }) => theme.dimLight};
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+
 `

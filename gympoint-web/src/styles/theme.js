@@ -2,6 +2,7 @@ export default {
   primary: '#ee4d64',
   primaryLight: '#ed3e57',
   secundary: '#4d85ee',
+  secundaryLight: '#4382f7',
   inkDark: '#444',
   ink: '#666',
   inkLight: '#999',

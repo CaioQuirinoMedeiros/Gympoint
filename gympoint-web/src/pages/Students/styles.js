@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+
 import FullButtonComponent from '~/components/Buttons/FullButton'
 import TextInputComponent from '~/components/Inputs/TextInput'
+import StudentComponent from './Student'
 
 export const Container = styled.div`
   flex: 1;
@@ -40,4 +42,7 @@ export const Content = styled.div`
   flex: 1;
   background: ${({ theme }) => theme.white};
   border-radius: 5px;
+  padding: 2rem;
 `
+
+export const Student = styled(StudentComponent)``
