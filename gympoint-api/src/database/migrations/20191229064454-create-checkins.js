@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         references: { model: 'students', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        onDelete: 'CASCADE'
       },
       created_at: {
         allowNull: false,
