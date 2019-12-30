@@ -6,9 +6,11 @@ export const Wrapper = styled.div`
 `
 
 export const Input = styled.input`
+  height: 38px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.dim};
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 1.4rem;
   border-radius: 5px;
   transition: all 0.2s;
@@ -24,7 +26,6 @@ export const Input = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme.ink};
   }
-
 `
 
 export const Label = styled.label`
