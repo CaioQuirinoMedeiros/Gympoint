@@ -6,8 +6,11 @@ export default {
   ink: '#666',
   inkLight: '#999',
   positive: '#42cb59',
+  positiveLight: '#3ede59',
   negative: '#de3b3b',
+  negativeLight: '#ed3434',
   dimDark: '#c3c3c3',
-  dim: '#e4e4e4',
+  dim: '#e5e5e5',
+  dimLight: '#f3f3f3',
   white: '#fff'
 }
