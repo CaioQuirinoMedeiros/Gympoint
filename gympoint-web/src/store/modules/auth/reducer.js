@@ -4,6 +4,7 @@ import { Types as AuthTypes } from './actions'
 
 const INITIAL_STATE = {
   token: null,
+  user: null,
   signed: false,
   loading: false
 }
@@ -17,6 +18,7 @@ export default function auth(state = INITIAL_STATE, action) {
       }
       case AuthTypes.SIGN_IN_SUCCESS: {
         draft.token = action.payload.token
+        draft.user = action.payload.user
         draft.signed = true
         draft.loading = false
         break
@@ -39,6 +41,7 @@ export default function auth(state = INITIAL_STATE, action) {
       }
       case AuthTypes.SIGN_OUT: {
         draft.signed = false
+        draft.user = null
         draft.token = null
         break
       }
