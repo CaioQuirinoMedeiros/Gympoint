@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = styled.button`
   height: 38px;
+  display: flex;
+  align-items: center;
   border-radius: 5px;
   padding-left: 1rem;
   padding-right: 1rem;

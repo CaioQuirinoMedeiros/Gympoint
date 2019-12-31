@@ -8,7 +8,7 @@ import {
   Left,
   Logo,
   NavBar,
-  NavItem,
+  NavDrawer,
   Right,
   UserName,
   LogoutButton
@@ -26,12 +26,8 @@ function Header() {
     <Container>
       <Left>
         <Logo>Gympoint</Logo>
-        <NavBar>
-          <NavItem to='/app/students'>Alunos</NavItem>
-          <NavItem to='/app/plans'>Planos</NavItem>
-          <NavItem to='/app/enrollments'>Matrículas</NavItem>
-          <NavItem to='/app/help-orders'>Pedidos de auxílio</NavItem>
-        </NavBar>
+        <NavBar />
+        <NavDrawer />
       </Left>
       <Right>
         <UserName>{user.name}</UserName>

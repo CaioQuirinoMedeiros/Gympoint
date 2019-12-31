@@ -30,12 +30,15 @@ export const StudentInfo = styled.span`
   margin-right: 0.5rem;
   overflow: hidden;
 
+  border: 1px solid red;
+
   &:nth-of-type(3) {
     text-align: center;
   }
 `
 
 export const Actions = styled.div`
+border: 1px solid red;
   display: flex;
   justify-content: flex-end;
 `

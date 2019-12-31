@@ -1,7 +1,10 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
 
 import BasicButtonComponent from '~/components/Buttons/BasicButton'
+import NavBarComponent from './NavBar'
+import NavDrawerComponent from './NavDrawer'
+
+const mediaWidth = '45em'
 
 export const Container = styled.div`
   display: flex;
@@ -17,6 +20,7 @@ export const Container = styled.div`
 
 export const Left = styled.div`
   display: flex;
+  align-items: center;
 `
 
 export const Right = styled.div`
@@ -34,30 +38,23 @@ export const Logo = styled.h2`
   border-right-color: ${({ theme }) => theme.dim};
 `
 
-export const NavBar = styled.ul`
-  display: flex;
+export const NavBar = styled(NavBarComponent)`
   margin-left: 1rem;
   margin-right: 1rem;
+
+  @media only screen and (max-width: ${mediaWidth}) {
+    display: none;
+  }
 `
 
-export const NavItem = styled(NavLink)`
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.8px;
-  color: ${({ theme }) => theme.inkLight};
-  margin-left: 1rem;
-  margin-right: 1rem;
-  font-size: 1.5rem;
-  transition: all 0.2s;
+export const NavDrawer = styled(NavDrawerComponent)`
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: none;
 
-  &:hover {
-    color: ${({ theme }) => theme.ink};
+  @media only screen and (max-width: ${mediaWidth}) {
+    display: flex;
   }
-
-  &.active {
-    color: ${({ theme }) => theme.inkDark};
-  }
-
 `
 
 export const UserName = styled.span`
