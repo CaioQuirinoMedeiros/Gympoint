@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useTable } from 'react-table'
+import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
 import StudentActions from '~/store/modules/student/actions'
+
+import StudentOptions from './StudentOptions'
+import StudentTable from './StudentsTable'
+import Loading from '~/components/Loading'
 
 import {
   Container,
@@ -11,34 +16,43 @@ import {
   HeaderActions,
   AddStudentButton,
   SearchStudent,
-  Content,
-  Table,
-  Student
+  Content
 } from './styles'
 
 export default function Students() {
-  const [searchStudent, setSearchStudent] = useState('')
-  const table = useTable({
-    columns: [
-      { Header: 'Name', accessor: 'name' },
-      { Header: 'Age', accessor: 'age' }
-    ],
-    data: [
-      { name: 'Caiao', age: 22 },
-      { name: 'Aécio', age: 21 },
-      { name: 'Gabriel', age: 25 }
-    ],
-
-  })
-
   const fetching = useSelector(({ student }) => student.fetching)
   const students = useSelector(({ student }) => student.data)
+
+  const data = useMemo(() => students, [students])
+
+  const columns = useMemo(
+    () => [
+      { Header: 'Name', accessor: 'name' },
+      { Header: 'Email', accessor: 'email' },
+      { Header: 'Age', accessor: 'age' },
+      {
+        accessor: StudentOptions,
+        id: 'actions',
+        disableSortBy: true
+      }
+    ],
+    []
+  )
+
+  const table = useTable(
+    {
+      columns,
+      data
+    },
+    useGlobalFilter,
+    useSortBy
+  )
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(StudentActions.getRequest())
-  }, [dispatch])
+  }, [])
 
   return (
     <Container>
@@ -46,39 +60,15 @@ export default function Students() {
         <Title>Gerenciando alunos</Title>
         <HeaderActions>
           <AddStudentButton>Cadastrar</AddStudentButton>
-          <SearchStudent name='searchStudent' onChangeText={setSearchStudent} />
+          <SearchStudent
+            name='searchStudent'
+            value={table.globalFilter}
+            onChangeText={text => table.setGlobalFilter(text || undefined)}
+          />
         </HeaderActions>
       </HeaderContainer>
       <Content>
-        <Table {...table.getTableProps()}>
-          <thead>
-            {table.headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render('Header')}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...table.getTableBodyProps()}>
-            {table.rows.map(row => {
-              table.prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  ))}
-                </tr>
-              )
-            })}
-          </tbody>
-        </Table>
-        {/* <Student student={{ name: 'Nome', email: 'E-mail', age: 'Idade' }} />
-        {students.map(student => (
-          <Student key={student.id} student={student} />
-        ))} */}
+        {fetching ? <Loading /> : <StudentTable table={table} />}
       </Content>
     </Container>
   )

@@ -39,8 +39,7 @@ export const NavItem = styled(NavLink)`
   font-weight: bold;
   letter-spacing: 0.8px;
   color: ${({ theme }) => theme.inkLight};
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem;
   font-size: 1.5rem;
   transition: all 0.2s;
 
