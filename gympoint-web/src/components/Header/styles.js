@@ -16,6 +16,7 @@ export const Container = styled.div`
   border-style: solid;
   border-color: red;
   border-color: ${({ theme }) => theme.dim};
+  z-index: 10;
 `
 
 export const Left = styled.div`
