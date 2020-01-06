@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Table } from './styles'
+import { Table, Icon } from './styles'
 
 function StudentsTable({ table }) {
   return (
@@ -9,8 +9,22 @@ function StudentsTable({ table }) {
         {table.headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+              <th
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+                isSorted={column.isSorted}
+              >
                 {column.render('Header')}
+                {column.canSort && (
+                  <Icon
+                    icon={
+                      column.isSorted
+                        ? column.isSortedDesc
+                          ? 'sort-up'
+                          : 'sort-down'
+                        : 'sort'
+                    }
+                  />
+                )}
               </th>
             ))}
           </tr>

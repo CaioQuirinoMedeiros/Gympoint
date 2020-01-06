@@ -5,6 +5,7 @@ export const Button = styled.button`
   height: 38px;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 5px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -13,6 +14,7 @@ export const Button = styled.button`
   font-size: 1.6rem;
   letter-spacing: 0.5px;
   transition: all 0.2s;
+  font-weight: 500;
 
   &:hover {
     transform: translateY(-1px);
