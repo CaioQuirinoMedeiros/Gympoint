@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { privateRoutes } from '~/routes/private'
 
 import { Container, Wrapper, NavItem, Button } from './styles'
 
-function NavBar({ match, location, ...rest }) {
+function NavDrawer({ match, location, ...rest }) {
   const [open, setOpen] = useState(false)
 
   const closeListener = () => {
@@ -20,14 +20,15 @@ function NavBar({ match, location, ...rest }) {
     }
   }, [open])
 
-  const activeRoute = privateRoutes.find(route =>
-    location.pathname.includes(route.path)
+  const activeRoute = useMemo(
+    () => privateRoutes.find(route => location.pathname.includes(route.path)),
+    [location]
   )
 
   return (
     <Container onClick={() => setOpen(!open)} {...rest}>
       <Button icon='chevron-down' open={open}>
-        {activeRoute.label || 'Menu'}
+        {activeRoute ? activeRoute.label : 'Menu'}
       </Button>
       <Wrapper open={open}>
         {privateRoutes.map((route, i) => (
@@ -40,4 +41,4 @@ function NavBar({ match, location, ...rest }) {
   )
 }
 
-export default withRouter(NavBar)
+export default withRouter(NavDrawer)
