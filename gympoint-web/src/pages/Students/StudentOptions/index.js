@@ -1,15 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import StudentActions from '~/store/modules/student/actions'
 
 import ConfirmWrapper from '~/components/ConfirmWrapper'
 import { Wrapper, ActionButton } from './styles'
 
-function StudentOptions({ name, ...rest }) {
+function StudentOptions({ name, id, ...rest }) {
+  const dispatch = useDispatch()
+
   function handleEdit() {
     alert('edit student ' + name)
   }
 
   function handleDelete() {
-    alert('DELETING student ' + name)
+    dispatch(StudentActions.deleteRequest(id))
   }
 
   return (

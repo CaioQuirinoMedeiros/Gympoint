@@ -23,6 +23,10 @@ function ConfirmWrapper({ children, onClick }) {
   }
 
   useEffect(() => {
+    return closeConfirmation
+  }, [closeConfirmation])
+
+  useEffect(() => {
     if (confirmOpen) {
       window.addEventListener('click', closeConfirmation)
       timeout.current = setTimeout(closeConfirmation, 5000)

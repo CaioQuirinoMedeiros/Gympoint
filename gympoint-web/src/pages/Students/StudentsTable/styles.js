@@ -48,4 +48,5 @@ export const Table = styled.table`
 export const Icon = styled(FontAwesomeIcon)`
   margin-left: 1rem;
   opacity: ${({ icon }) => icon === 'sort' ? 0.4 : 1};
+  transition: all 0.2s;
 `

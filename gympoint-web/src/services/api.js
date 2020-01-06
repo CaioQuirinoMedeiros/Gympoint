@@ -23,6 +23,7 @@ const create = () => {
   // Students
 
   const getStudents = () => api.get('students')
+  const deleteStudent = id => api.delete(`students/${id}`)
 
   return {
     setAuthToken,
@@ -30,7 +31,8 @@ const create = () => {
 
     login,
 
-    getStudents
+    getStudents,
+    deleteStudent
   }
 }
 

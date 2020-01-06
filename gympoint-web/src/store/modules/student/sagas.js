@@ -14,4 +14,17 @@ export function* getStudents() {
   }
 }
 
-export default all([takeLatest(StudentTypes.GET_REQUEST, getStudents)])
+export function* deleteStudent({ payload }) {
+  try {
+    yield call(api.deleteStudent, payload.id)
+
+    yield put(StudentActions.deleteSuccess())
+  } catch (err) {
+    yield put(StudentActions.deleteFailure())
+  }
+}
+
+export default all([
+  takeLatest(StudentTypes.GET_REQUEST, getStudents),
+  takeLatest(StudentTypes.DELETE_REQUEST, deleteStudent)
+])

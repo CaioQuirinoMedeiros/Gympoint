@@ -31,7 +31,7 @@ export default function Students() {
       { Header: 'Email', accessor: 'email' },
       { Header: 'Age', accessor: 'age' },
       {
-        accessor: StudentOptions,
+        accessor: props => <StudentOptions {...props} />,
         id: 'actions',
         disableSortBy: true
       }
