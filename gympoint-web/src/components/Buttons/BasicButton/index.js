@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 import { Button } from './styles'
 
-function FullButton({ children, ...rest }) {
-  return <Button {...rest}>{children}</Button>
+function BasicButton({ children, ...rest }) {
+   return <Button {...rest}>{children}</Button>
 }
 
-FullButton.propTypes = {
+BasicButton.propTypes = {
   children: PropTypes.node,
 }
 
-export default FullButton
+export default BasicButton

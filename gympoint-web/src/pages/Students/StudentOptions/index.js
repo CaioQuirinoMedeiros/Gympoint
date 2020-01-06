@@ -1,5 +1,6 @@
 import React from 'react'
 
+import ConfirmWrapper from '~/components/ConfirmWrapper'
 import { Wrapper, ActionButton } from './styles'
 
 function StudentOptions({ name, ...rest }) {
@@ -13,10 +14,10 @@ function StudentOptions({ name, ...rest }) {
 
   return (
     <Wrapper {...rest}>
-        <ActionButton onClick={handleEdit}>editar</ActionButton>
-        <ActionButton onClick={handleDelete} negative>
-          apagar
-        </ActionButton>
+      <ActionButton onClick={handleEdit}>editar</ActionButton>
+      <ConfirmWrapper onClick={handleDelete}>
+        <ActionButton negative>apagar</ActionButton>
+      </ConfirmWrapper>
     </Wrapper>
   )
 }
