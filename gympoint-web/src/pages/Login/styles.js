@@ -11,7 +11,7 @@ export const Container = styled.section`
   justify-content: center;
 `
 
-export const LoginWindow = styled.div`
+export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 2.5rem;

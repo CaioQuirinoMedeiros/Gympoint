@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import AuthActions from '~/store/modules/auth/actions'
 
-import { Container, LoginWindow, Title, Input, Button } from './styles'
+import { Container, LoginForm, Title, Input, Button } from './styles'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -13,14 +13,14 @@ function Login() {
 
   const dispatch = useDispatch()
 
-  function handleLogin() {
-    console.log('OPA')
+  function handleLogin(e) {
+    e.preventDefault()
     dispatch(AuthActions.signInRequest(email, password))
   }
 
   return (
     <Container>
-      <LoginWindow>
+      <LoginForm onSubmit={handleLogin}>
         <Title>Gympoint</Title>
         <Input
           name='email'
@@ -35,10 +35,10 @@ function Login() {
           onChangeText={setPassword}
           placeholder='********'
         />
-        <Button onClick={handleLogin} loading={loading} disabled={loading}>
+        <Button type="submit" loading={loading} disabled={loading}>
           Entrar no sistema
         </Button>
-      </LoginWindow>
+      </LoginForm>
     </Container>
   )
 }
