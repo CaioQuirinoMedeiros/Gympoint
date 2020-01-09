@@ -5,7 +5,7 @@ import { Button, Icon } from './styles'
 
 function FullButton({ children, loading, icon, iconProps, ...rest }) {
   return (
-    <Button {...rest}>
+    <Button {...rest} disabled={loading}>
       {icon && <Icon icon={icon} {...iconProps} />}
       {loading ? 'Carregando...' : children}
     </Button>

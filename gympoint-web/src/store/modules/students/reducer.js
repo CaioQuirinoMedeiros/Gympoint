@@ -6,10 +6,11 @@ const INITIAL_STATE = {
   data: [],
   student: null,
   fetching: false,
+  editing: false,
   deleting: false,
   fetchingOne: false,
   fetchingError: null,
-  fetchingOneError: null,
+  fetchingOneError: null
 }
 
 export default function students(state = INITIAL_STATE, action) {
@@ -42,6 +43,23 @@ export default function students(state = INITIAL_STATE, action) {
       }
       case StudentsTypes.DELETE_FAILURE: {
         draft.deleting = false
+        break
+      }
+      case StudentsTypes.EDIT_REQUEST: {
+        draft.editing = true
+        break
+      }
+      case StudentsTypes.EDIT_SUCCESS: {
+        draft.data = state.data.map(student =>
+          student.id === action.payload.student.id
+            ? action.payload.student
+            : student
+        )
+        draft.editing = false
+        break
+      }
+      case StudentsTypes.EDIT_FAILURE: {
+        draft.editing = false
         break
       }
       case StudentsTypes.SHOW_REQUEST: {

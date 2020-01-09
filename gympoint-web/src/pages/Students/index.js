@@ -19,7 +19,7 @@ import {
   Content
 } from './styles'
 
-export default function Students() {
+function Students({ history }) {
   const fetching = useSelector(({ students }) => students.fetching)
   const students = useSelector(({ students }) => students.data)
 
@@ -54,12 +54,18 @@ export default function Students() {
     dispatch(StudentActions.getRequest())
   }, [])
 
+  function handleAddStudent() {
+    history.push('students/register')
+  }
+
   return (
     <Container>
       <HeaderContainer>
         <Title>Gerenciando alunos</Title>
         <HeaderActions>
-          <AddStudentButton>Cadastrar</AddStudentButton>
+          <AddStudentButton onClick={handleAddStudent}>
+            Cadastrar
+          </AddStudentButton>
           <SearchStudent
             name='searchStudent'
             value={table.globalFilter}
@@ -73,3 +79,5 @@ export default function Students() {
     </Container>
   )
 }
+
+export default Students

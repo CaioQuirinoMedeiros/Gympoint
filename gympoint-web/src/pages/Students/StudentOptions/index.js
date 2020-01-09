@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory, useLocation, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import StudentActions from '~/store/modules/students/actions'
 
@@ -8,12 +8,6 @@ import ConfirmWrapper from '~/components/ConfirmWrapper'
 import { Wrapper, ActionButton } from './styles'
 
 function StudentOptions({ name, id, ...rest }) {
-  console.log(rest)
-  const history = useHistory()
-  const location = useLocation()
-
-  console.log('history: ', history)
-  console.log('location: ', location)
   const dispatch = useDispatch()
 
   function handleDelete() {

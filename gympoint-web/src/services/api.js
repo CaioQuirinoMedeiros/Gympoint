@@ -21,6 +21,7 @@ const create = () => {
 
   const getStudents = () => api.get('students')
   const deleteStudent = id => api.delete(`students/${id}`)
+  const editStudent = (id, data) => api.put(`students/${id}`, data)
   const showStudent = id => api.get(`students/${id}`)
 
   return {
@@ -31,6 +32,7 @@ const create = () => {
 
     getStudents,
     deleteStudent,
+    editStudent,
     showStudent
   }
 }

@@ -11,8 +11,6 @@ function PrivateRoutes(props) {
     return <Redirect to='/app' />
   }
 
-  console.log('OPA', signed)
-
   return (
     <Switch>
       <Route path={`${props.match.path}/login`} exact component={Login} />

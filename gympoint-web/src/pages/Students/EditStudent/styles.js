@@ -26,11 +26,13 @@ export const Title = styled.h2`
 
 export const HeaderActions = styled.div`
   display: flex;
+  align-items: center;
 `
 
 export const GoBack = styled(FullButtonComponent).attrs({
   icon: 'chevron-left'
 })`
+  margin-left: 2rem;
   background: ${({ theme }) => theme.dimDark};
   :hover {
     background: ${({ theme }) => theme.dimDark};
@@ -57,4 +59,12 @@ export const Input = styled(FormInputComponent)``
 export const InputsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  > * {
+    flex-grow: 1;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
 `

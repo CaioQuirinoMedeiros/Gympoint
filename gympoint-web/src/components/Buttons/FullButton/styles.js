@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Button = styled.button`
@@ -16,11 +16,21 @@ export const Button = styled.button`
   transition: all 0.2s;
   font-weight: 500;
 
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 10px -5px #666;
-    background: ${({ theme }) => theme.primaryLight};
-  }
+  ${({ disabled }) =>
+    disabled
+      ? css`
+          opacity: 0.5;
+          &:hover {
+            cursor: not-allowed;
+          }
+        `
+      : css`
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 10px -5px #666;
+            background: ${({ theme }) => theme.primaryLight};
+          }
+        `}
 `
 
 export const Icon = styled(FontAwesomeIcon)`
