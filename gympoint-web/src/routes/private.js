@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import AppLayout from '~/pages/_layouts/App'
 
 import Students from '~/pages/Students'
+import EditStudent from '~/pages/Students/EditStudent'
 import Plans from '~/pages/Plans'
 import Enrollments from '~/pages/Enrollments'
 import HelpOrders from '~/pages/HelpOrders'
@@ -31,8 +32,14 @@ function PrivateRoutes(props) {
             key={i}
             path={`${props.match.path}/${route.path}`}
             component={route.component}
+            exact
           />
         ))}
+        <Route
+          exact
+          path={`${props.match.path}/students/:studentId/edit`}
+          component={EditStudent}
+        />
         <Redirect to={`${props.match.path}/students`} />
       </Switch>
     </AppLayout>

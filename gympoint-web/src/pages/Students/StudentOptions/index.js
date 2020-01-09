@@ -1,17 +1,20 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory, useLocation, Link } from 'react-router-dom'
 
-import StudentActions from '~/store/modules/student/actions'
+import StudentActions from '~/store/modules/students/actions'
 
 import ConfirmWrapper from '~/components/ConfirmWrapper'
 import { Wrapper, ActionButton } from './styles'
 
 function StudentOptions({ name, id, ...rest }) {
-  const dispatch = useDispatch()
+  console.log(rest)
+  const history = useHistory()
+  const location = useLocation()
 
-  function handleEdit() {
-    alert('edit student ' + name)
-  }
+  console.log('history: ', history)
+  console.log('location: ', location)
+  const dispatch = useDispatch()
 
   function handleDelete() {
     dispatch(StudentActions.deleteRequest(id))
@@ -19,7 +22,9 @@ function StudentOptions({ name, id, ...rest }) {
 
   return (
     <Wrapper {...rest}>
-      <ActionButton onClick={handleEdit}>editar</ActionButton>
+      <Link to={`students/${id}/edit`}>
+        <ActionButton>editar</ActionButton>
+      </Link>
       <ConfirmWrapper onClick={handleDelete}>
         <ActionButton negative>apagar</ActionButton>
       </ConfirmWrapper>
@@ -27,4 +32,5 @@ function StudentOptions({ name, id, ...rest }) {
   )
 }
 
+// export default withRouter(StudentOptions)
 export default StudentOptions

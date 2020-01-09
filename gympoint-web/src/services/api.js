@@ -2,9 +2,6 @@ import axios from 'axios'
 
 import apiConfig from '~/config/api-config'
 
-console.log('API')
-console.log(apiConfig)
-
 const create = () => {
   const api = axios.create({ ...apiConfig })
 
@@ -24,6 +21,7 @@ const create = () => {
 
   const getStudents = () => api.get('students')
   const deleteStudent = id => api.delete(`students/${id}`)
+  const showStudent = id => api.get(`students/${id}`)
 
   return {
     setAuthToken,
@@ -32,7 +30,8 @@ const create = () => {
     login,
 
     getStudents,
-    deleteStudent
+    deleteStudent,
+    showStudent
   }
 }
 

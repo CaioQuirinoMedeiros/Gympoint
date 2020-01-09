@@ -7,8 +7,8 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.white};
   font-size: 1.6rem;
