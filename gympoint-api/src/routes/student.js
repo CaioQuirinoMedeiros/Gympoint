@@ -8,6 +8,7 @@ const routes = new Router();
 
 routes.post('/students', validateStudentStore, StudentController.store);
 routes.get('/students', StudentController.index);
+routes.get('/students/:student_id', StudentController.show);
 routes.put('/students/:student_id', StudentController.update);
 routes.delete('/students/:student_id', StudentController.destroy);
 

@@ -29,6 +29,24 @@ class StudentController {
     }
   }
 
+  async show (req, res) {
+    const { student_id } = req.params;
+    try {
+      const student = await Student.findByPk(student_id);
+
+      if (!student) {
+        return res
+          .status(404)
+          .send({ error: `O aluno ${student_id} não foi encontrado` });
+      }
+
+      return res.status(200).send(student);
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send({ error: 'Erro ao buscar aluno' });
+    }
+  }
+
   async update(req, res) {
     const { student_id } = req.params;
     try {
