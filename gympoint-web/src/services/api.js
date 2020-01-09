@@ -20,6 +20,7 @@ const create = () => {
   // Students
 
   const getStudents = () => api.get('students')
+  const createStudent = data => api.post('students', data)
   const deleteStudent = id => api.delete(`students/${id}`)
   const editStudent = (id, data) => api.put(`students/${id}`, data)
   const showStudent = id => api.get(`students/${id}`)
@@ -31,6 +32,7 @@ const create = () => {
     login,
 
     getStudents,
+    createStudent,
     deleteStudent,
     editStudent,
     showStudent

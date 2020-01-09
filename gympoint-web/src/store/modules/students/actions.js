@@ -2,6 +2,9 @@ export const Types = {
   GET_REQUEST: '@students/GET_REQUEST',
   GET_SUCCESS: '@students/GET_SUCCESS',
   GET_FAILURE: '@students/GET_FAILURE',
+  CREATE_REQUEST: '@students/CREATE_REQUEST',
+  CREATE_SUCCESS: '@students/CREATE_SUCCESS',
+  CREATE_FAILURE: '@students/CREATE_FAILURE',
   DELETE_REQUEST: '@students/DELETE_REQUEST',
   DELETE_SUCCESS: '@students/DELETE_SUCCESS',
   DELETE_FAILURE: '@students/DELETE_FAILURE',
@@ -27,6 +30,20 @@ export default {
     payload: { error }
   }),
 
+  createRequest: data => ({
+    type: Types.CREATE_REQUEST,
+    payload: { data }
+  }),
+
+  createSuccess: student => ({
+    type: Types.CREATE_SUCCESS,
+    payload: { student }
+  }),
+
+  createFailure: error => ({
+    type: Types.CREATE_FAILURE,
+    payload: { error }
+  }),
   deleteRequest: id => ({
     type: Types.DELETE_REQUEST,
     payload: { id }
@@ -48,7 +65,7 @@ export default {
 
   editSuccess: student => ({
     type: Types.EDIT_SUCCESS,
-    payload: {student}
+    payload: { student }
   }),
 
   editFailure: error => ({
@@ -63,11 +80,11 @@ export default {
 
   showSuccess: student => ({
     type: Types.SHOW_SUCCESS,
-    payload: {student}
+    payload: { student }
   }),
 
   showFailure: error => ({
     type: Types.SHOW_FAILURE,
     payload: { error }
-  }),
+  })
 }

@@ -11,7 +11,7 @@ function StudentsTable({ table }) {
             {headerGroup.headers.map(column => (
               <th
                 {...column.getHeaderProps(column.getSortByToggleProps())}
-                isSorted={column.isSorted}
+                sortable={column.canSort}
               >
                 {column.render('Header')}
                 {column.canSort && (

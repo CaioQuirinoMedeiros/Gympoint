@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Table = styled.table`
@@ -25,7 +25,7 @@ export const Table = styled.table`
     position: relative;
     transition: all 0.2s;
 
-    &.canSort:hover {
+    &[title='Toggle SortBy']:hover {
       color: ${({ theme }) => theme.ink};
     }
 
@@ -47,6 +47,6 @@ export const Table = styled.table`
 
 export const Icon = styled(FontAwesomeIcon)`
   margin-left: 1rem;
-  opacity: ${({ icon }) => icon === 'sort' ? 0.4 : 1};
+  opacity: ${({ icon }) => (icon === 'sort' ? 0.4 : 1)};
   transition: all 0.2s;
 `

@@ -14,6 +14,16 @@ export function* getStudents() {
   }
 }
 
+export function* createStudent({ payload }) {
+  try {
+    const { data } = yield call(api.createStudent, payload.data)
+
+    yield put(StudentActions.createSuccess(data))
+  } catch (err) {
+    yield put(StudentActions.createFailure())
+  }
+}
+
 export function* deleteStudent({ payload }) {
   try {
     yield call(api.deleteStudent, payload.id)
@@ -46,6 +56,7 @@ export function* showStudent({ payload }) {
 
 export default all([
   takeLatest(StudentsTypes.GET_REQUEST, getStudents),
+  takeLatest(StudentsTypes.CREATE_REQUEST, createStudent),
   takeLatest(StudentsTypes.DELETE_REQUEST, deleteStudent),
   takeLatest(StudentsTypes.EDIT_REQUEST, editStudent),
   takeLatest(StudentsTypes.SHOW_REQUEST, showStudent)

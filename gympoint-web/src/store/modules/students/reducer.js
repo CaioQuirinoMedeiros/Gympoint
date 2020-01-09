@@ -5,6 +5,7 @@ import { Types as StudentsTypes } from './actions'
 const INITIAL_STATE = {
   data: [],
   student: null,
+  creating: false,
   fetching: false,
   editing: false,
   deleting: false,
@@ -28,6 +29,19 @@ export default function students(state = INITIAL_STATE, action) {
       case StudentsTypes.GET_FAILURE: {
         draft.fetching = false
         draft.fetchingError = action.payload.error
+        break
+      }
+      case StudentsTypes.CREATE_REQUEST: {
+        draft.creating = true
+        break
+      }
+      case StudentsTypes.CREATE_SUCCESS: {
+        draft.creating = false
+        draft.data = [...state.data, action.payload.student]
+        break
+      }
+      case StudentsTypes.CREATE_FAILURE: {
+        draft.creating = false
         break
       }
       case StudentsTypes.DELETE_REQUEST: {
