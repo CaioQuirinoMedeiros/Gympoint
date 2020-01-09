@@ -7,8 +7,20 @@ class Student extends Model {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         age: Sequelize.INTEGER,
-        weight: Sequelize.INTEGER,
-        height: Sequelize.INTEGER
+        weight: {
+          type: Sequelize.INTEGER,
+          validate: {
+            min: 20000,
+            max: 400000
+          }
+        },
+        height: {
+          type: Sequelize.INTEGER,
+          validate: {
+            min: 40,
+            max: 250
+          }
+        }
       },
       {
         sequelize
