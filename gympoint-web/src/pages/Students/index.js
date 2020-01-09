@@ -3,7 +3,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
-import StudentActions from '~/store/modules/student/actions'
+import StudentActions from '~/store/modules/students/actions'
 
 import StudentOptions from './StudentOptions'
 import StudentTable from './StudentsTable'
@@ -20,8 +20,8 @@ import {
 } from './styles'
 
 export default function Students() {
-  const fetching = useSelector(({ student }) => student.fetching)
-  const students = useSelector(({ student }) => student.data)
+  const fetching = useSelector(({ students }) => students.fetching)
+  const students = useSelector(({ students }) => students.data)
 
   const data = useMemo(() => students, [students])
 

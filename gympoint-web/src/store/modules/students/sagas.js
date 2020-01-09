@@ -2,7 +2,7 @@ import { all, takeLatest, put, call } from 'redux-saga/effects'
 
 import api from '~/services/api'
 
-import StudentActions, { Types as StudentTypes } from './actions'
+import StudentActions, { Types as StudentsTypes } from './actions'
 
 export function* getStudents() {
   try {
@@ -24,7 +24,18 @@ export function* deleteStudent({ payload }) {
   }
 }
 
+export function* showStudent({ payload }) {
+  try {
+    const { data } = yield call(api.showStudent, payload.id)
+
+    yield put(StudentActions.showSuccess(data))
+  } catch (err) {
+    yield put(StudentActions.showFailure())
+  }
+}
+
 export default all([
-  takeLatest(StudentTypes.GET_REQUEST, getStudents),
-  takeLatest(StudentTypes.DELETE_REQUEST, deleteStudent)
+  takeLatest(StudentsTypes.GET_REQUEST, getStudents),
+  takeLatest(StudentsTypes.DELETE_REQUEST, deleteStudent),
+  takeLatest(StudentsTypes.SHOW_REQUEST, showStudent)
 ])
