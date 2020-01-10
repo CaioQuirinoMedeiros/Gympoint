@@ -27,9 +27,9 @@ function Students({ history }) {
 
   const columns = useMemo(
     () => [
-      { Header: 'Name', accessor: 'name' },
+      { Header: 'Nome', accessor: 'name' },
       { Header: 'Email', accessor: 'email' },
-      { Header: 'Age', accessor: 'age' },
+      { Header: 'Idade', accessor: 'age' },
       {
         accessor: props => <StudentOptions {...props} />,
         id: 'actions',

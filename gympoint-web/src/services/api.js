@@ -25,6 +25,12 @@ const create = () => {
   const editStudent = (id, data) => api.put(`students/${id}`, data)
   const showStudent = id => api.get(`students/${id}`)
 
+  const getPlans = () => api.get('plans')
+  const createPlan = data => api.post('plans', data)
+  const deletePlan = id => api.delete(`plans/${id}`)
+  const editPlan = (id, data) => api.put(`plans/${id}`, data)
+  const showPlan = id => api.get(`plans/${id}`)
+
   return {
     setAuthToken,
     removeAuthToken,
@@ -35,7 +41,13 @@ const create = () => {
     createStudent,
     deleteStudent,
     editStudent,
-    showStudent
+    showStudent,
+
+    getPlans,
+    createPlan,
+    deletePlan,
+    editPlan,
+    showPlan
   }
 }
 
