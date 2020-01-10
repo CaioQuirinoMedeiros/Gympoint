@@ -30,6 +30,8 @@ export const Table = styled.table`
       color: ${({ theme }) => theme.ink};
     }
 
+    &:nth-of-type(5),
+    &:nth-of-type(4),
     &:nth-of-type(3),
     &:nth-of-type(2) {
       text-align: center;
@@ -41,6 +43,8 @@ export const Table = styled.table`
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 
+    &:nth-of-type(5),
+    &:nth-of-type(4),
     &:nth-of-type(3),
     &:nth-of-type(2) {
       text-align: center;

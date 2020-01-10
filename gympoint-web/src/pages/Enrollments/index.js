@@ -3,6 +3,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
+import { formatDate } from '~/utils/helpers/date'
 import EnrollmentsActions from '~/store/modules/enrollments/actions'
 
 import EnrollmentOptions from './EnrollmentOptions'
@@ -15,7 +16,8 @@ import {
   Title,
   HeaderActions,
   AddButton,
-  Content
+  Content,
+  Check
 } from './styles'
 
 function Enrollments({ history }) {
@@ -30,9 +32,23 @@ function Enrollments({ history }) {
     () => [
       { Header: 'Aluno', accessor: 'student.name' },
       { Header: 'Plano', accessor: 'plan.title' },
-      { Header: 'Início',  accessor: 'start_date' },
-      { Header: 'Término',  accessor: 'end_date' },
-      { Header: 'Ativa',  accessor: 'active' },
+      {
+        Header: 'Início',
+        accessor: 'start_date',
+        Cell: ({ cell: { value } }) => formatDate(value)
+      },
+      {
+        Header: 'Término',
+        accessor: 'end_date',
+        Cell: ({ cell: { value } }) => formatDate(value)
+      },
+      {
+        Header: 'Ativa',
+        accessor: 'active',
+        Cell: ({ cell: { value } }) => (
+          <Check className={value ? 'active' : undefined} />
+        )
+      },
       {
         accessor: props => <EnrollmentOptions {...props} />,
         id: 'actions',

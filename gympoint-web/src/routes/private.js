@@ -11,11 +11,13 @@ import Plans from '~/pages/Plans'
 import EditPlan from '~/pages/Plans/EditPlan'
 import AddPlan from '~/pages/Plans/AddPlan'
 import Enrollments from '~/pages/Enrollments'
+import EditEnrollment from '~/pages/Enrollments/EditEnrollment'
+import AddEnrollment from '~/pages/Enrollments/AddEnrollment'
 import HelpOrders from '~/pages/HelpOrders'
 
 export const privateRoutes = [
   { label: 'Alunos', path: 'students', component: Students },
-  { label: 'Plano', path: 'plans', component: Plans },
+  { label: 'Planos', path: 'plans', component: Plans },
   { label: 'Matrículas', path: 'enrollments', component: Enrollments },
   { label: 'Pedidos de auxílio', path: 'help-orders', component: HelpOrders }
 ]
@@ -57,6 +59,16 @@ function PrivateRoutes(props) {
           exact
           path={`${props.match.path}/plans/register`}
           component={AddPlan}
+        />
+        <Route
+          exact
+          path={`${props.match.path}/enrollments/:enrollmentId/edit`}
+          component={EditEnrollment}
+        />
+        <Route
+          exact
+          path={`${props.match.path}/enrollments/register`}
+          component={AddEnrollment}
         />
         <Redirect to={`${props.match.path}/students`} />
       </Switch>
