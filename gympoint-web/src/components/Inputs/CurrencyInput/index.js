@@ -9,7 +9,6 @@ function CurrencyInput({ name, className, ...rest }) {
   const { fieldName, registerField, defaultValue, error } = useField(name)
 
   useEffect(() => {
-    console.log('ref: ', ref.current)
     if (ref.current) {
       registerField({
         name: fieldName,
@@ -24,7 +23,7 @@ function CurrencyInput({ name, className, ...rest }) {
       {rest.label && <Label htmlFor={name}>{rest.label}</Label>}
       <Input
         name={fieldName}
-        defaultValue={defaultValue}
+        value={defaultValue}
         ref={ref}
         prefix='R$ '
         decimalSeparator=','
