@@ -13,7 +13,7 @@ const bodySchema = Yup.object().shape({
     .required('O id do plano é obrigatório')
     .positive('O id deve ser um inteiro positivo'),
   start_date: Yup.date('A data de início deve ser uma data válida')
-    .required('A duração é obrigatório')
+    .required('A data de início é obrigatório')
     .min(new Date(), 'A data não pode ser uma data passada')
 });
 
