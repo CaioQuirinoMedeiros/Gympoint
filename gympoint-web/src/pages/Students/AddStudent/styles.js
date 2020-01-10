@@ -44,27 +44,3 @@ export const SaveStudent = styled(FullButtonComponent).attrs({
 })`
   margin-left: 1rem;
 `
-
-export const Form = styled(UnformForm)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: ${({ theme }) => theme.white};
-  border-radius: 5px;
-  padding: 2rem;
-`
-
-export const Input = styled(FormInputComponent)``
-
-export const InputsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  > * {
-    flex-grow: 1;
-
-    &:not(:last-child) {
-      margin-right: 1.5rem;
-    }
-  }
-`

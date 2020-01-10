@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Redirect } from 'react-router-dom'
 
 import StudentsActions from '~/store/modules/students/actions'
-import studentSchema from '~/validations/student'
+import StudentForm from '../StudentForm'
 
 import Loading from '~/components/Loading'
 
@@ -15,9 +15,6 @@ import {
   HeaderActions,
   GoBack,
   SaveStudent,
-  Form,
-  Input,
-  InputsWrapper
 } from './styles'
 
 function EditStudent({ history }) {
@@ -75,36 +72,11 @@ function EditStudent({ history }) {
           </SaveStudent>
         </HeaderActions>
       </HeaderContainer>
-      <Form
+      <StudentForm
         initialData={transformReceivedData(student)}
         onSubmit={handleSubmit}
-        schema={studentSchema}
         id='edit-student-form'
-      >
-        <Input name='name' label='Nome' />
-        <Input name='email' label='Email' type='email' />
-        <InputsWrapper>
-          <Input name='age' label='Idade' type='number' />
-          <Input
-            name='weight'
-            label='Peso'
-            type='number'
-            min={30}
-            max={400}
-            step={0.1}
-            unit='kg'
-          />
-          <Input
-            name='height'
-            label='Altura'
-            type='number'
-            max={2.5}
-            min={0.4}
-            step={0.01}
-            unit='m'
-          />
-        </InputsWrapper>
-      </Form>
+      />
     </Container>
   )
 }

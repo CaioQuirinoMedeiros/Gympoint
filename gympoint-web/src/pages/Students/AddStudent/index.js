@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import StudentsActions from '~/store/modules/students/actions'
-import studentSchema from '~/validations/student'
+import StudentForm from '../StudentForm'
 
 import Loading from '~/components/Loading'
 
@@ -14,9 +14,6 @@ import {
   HeaderActions,
   GoBack,
   SaveStudent,
-  Form,
-  Input,
-  InputsWrapper
 } from './styles'
 
 function AddStudent({ history }) {
@@ -38,10 +35,9 @@ function AddStudent({ history }) {
 
   function handleSubmit(data, { resetForm }) {
     const transformedData = transformDataToSend(data)
-    console.log(transformedData)
     dispatch(StudentsActions.createRequest(transformedData))
 
-    // resetForm()
+    resetForm()
   }
 
   return (
@@ -60,35 +56,7 @@ function AddStudent({ history }) {
           </SaveStudent>
         </HeaderActions>
       </HeaderContainer>
-      <Form
-        onSubmit={handleSubmit}
-        schema={studentSchema}
-        id='create-student-form'
-      >
-        <Input name='name' label='Nome' />
-        <Input name='email' label='Email' type='email' />
-        <InputsWrapper>
-          <Input name='age' label='Idade' type='number' />
-          <Input
-            name='weight'
-            label='Peso'
-            type='number'
-            min={30}
-            max={400}
-            step={0.1}
-            unit='kg'
-          />
-          <Input
-            name='height'
-            label='Altura'
-            type='number'
-            max={2.5}
-            min={0.4}
-            step={0.01}
-            unit='m'
-          />
-        </InputsWrapper>
-      </Form>
+      <StudentForm onSubmit={handleSubmit} id='create-student-form' />
     </Container>
   )
 }
