@@ -8,7 +8,6 @@ export default Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
     .email('Digite um email válido')
-    .max(5)
     .required('O email é obrigatório'),
   age: Yup.number()
     .typeError('A idade deve ser um número inteiro')

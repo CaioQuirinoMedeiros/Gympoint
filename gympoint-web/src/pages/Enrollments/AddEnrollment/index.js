@@ -25,10 +25,12 @@ function AddEnrollment({ history }) {
     history.goBack()
   }
 
-
   function handleSubmit(data, { resetForm }) {
     console.log(data)
-    // dispatch(EnrollmentsActions.createRequest(data))
+    const { student_id, plan_id, start_date } = data
+    dispatch(
+      EnrollmentsActions.createRequest({ student_id, plan_id, start_date })
+    )
     // resetForm()
   }
 
@@ -39,7 +41,11 @@ function AddEnrollment({ history }) {
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveButton type='submit' form='create-enrollment-form' disabled={creating}>
+          <SaveButton
+            type='submit'
+            form='create-enrollment-form'
+            disabled={creating}
+          >
             Salvar
           </SaveButton>
         </HeaderActions>

@@ -3,7 +3,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
-import { formatDate } from '~/utils/helpers/date'
+import { formatStringDate } from '~/utils/helpers/date'
 import EnrollmentsActions from '~/store/modules/enrollments/actions'
 
 import EnrollmentOptions from './EnrollmentOptions'
@@ -28,6 +28,12 @@ function Enrollments({ history }) {
 
   const data = useMemo(() => enrollments, [enrollments])
 
+  const sorting = React.useCallback((props1, props2) => {
+    console.log('props1: ', props1)
+    console.log('props2: ', props2)
+    return props2.values.active ? 1 : -1
+  })
+
   const columns = useMemo(
     () => [
       { Header: 'Aluno', accessor: 'student.name' },
@@ -35,19 +41,20 @@ function Enrollments({ history }) {
       {
         Header: 'Início',
         accessor: 'start_date',
-        Cell: ({ cell: { value } }) => formatDate(value)
+        Cell: ({ cell: { value } }) => formatStringDate(value)
       },
       {
         Header: 'Término',
         accessor: 'end_date',
-        Cell: ({ cell: { value } }) => formatDate(value)
+        Cell: ({ cell: { value } }) => formatStringDate(value)
       },
       {
         Header: 'Ativa',
         accessor: 'active',
         Cell: ({ cell: { value } }) => (
           <Check className={value ? 'active' : undefined} />
-        )
+        ),
+        sortType: sorting
       },
       {
         accessor: props => <EnrollmentOptions {...props} />,
