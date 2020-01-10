@@ -11,5 +11,5 @@ export default Yup.object().shape({
   price: Yup.number()
     .typeError('O preço deve ser um número inteiro')
     .required('O preço é obrigatório')
-    .max(10000, 'Preço acima do permitido')
+    .max(100000, 'Preço acima do permitido')
 })
