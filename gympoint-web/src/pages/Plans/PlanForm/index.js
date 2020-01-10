@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 
-import planSchema from '~/validations/plan'
+import planSchema from '~/utils/validations/plan'
 
 import CurrencyInput from '~/components/Inputs/CurrencyInput'
 

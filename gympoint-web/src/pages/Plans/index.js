@@ -3,6 +3,7 @@ import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
+import { currencyFormatter } from '~/utils/helpers/currency'
 import PlansActions from '~/store/modules/plans/actions'
 
 import PlanOptions from './PlanOptions'
@@ -30,7 +31,10 @@ function Plans({ history }) {
     () => [
       { Header: 'Título', accessor: 'title' },
       { Header: 'Duração', accessor: row => `${row.duration} meses` },
-      { Header: 'Preço', accessor: 'price' },
+      {
+        Header: 'Valor / Mês',
+        accessor: row => currencyFormatter(row.price)
+      },
       {
         accessor: props => <PlanOptions {...props} />,
         id: 'actions',
@@ -50,7 +54,6 @@ function Plans({ history }) {
   )
 
   useEffect(() => {
-    console.log('CARREGOU')
     dispatch(PlansActions.getRequest())
   }, [])
 

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 
-import studentSchema from '~/validations/student'
+import studentSchema from '~/utils/validations/student'
 
 import {
   Form,

@@ -8,6 +8,7 @@ import Students from '~/pages/Students'
 import EditStudent from '~/pages/Students/EditStudent'
 import AddStudent from '~/pages/Students/AddStudent'
 import Plans from '~/pages/Plans'
+import EditPlan from '~/pages/Plans/EditPlan'
 import AddPlan from '~/pages/Plans/AddPlan'
 import Enrollments from '~/pages/Enrollments'
 import HelpOrders from '~/pages/HelpOrders'
@@ -46,6 +47,11 @@ function PrivateRoutes(props) {
           exact
           path={`${props.match.path}/students/register`}
           component={AddStudent}
+        />
+        <Route
+          exact
+          path={`${props.match.path}/plans/:planId/edit`}
+          component={EditPlan}
         />
         <Route
           exact
