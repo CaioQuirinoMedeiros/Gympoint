@@ -13,7 +13,7 @@ import {
   Title,
   HeaderActions,
   GoBack,
-  Save,
+  Save
 } from './styles'
 
 function AddPlan({ history }) {
@@ -25,10 +25,17 @@ function AddPlan({ history }) {
     history.goBack()
   }
 
+  function transformDataToSend(data) {
+    return {
+      ...data,
+      price: parseInt(data.price * 100)
+    }
+  }
+
   function handleSubmit(data, { resetForm }) {
-    console.log(data)
-    // dispatch(PlansActions.createRequest(data))
-    // resetForm()
+    const transformedData = transformDataToSend(data)
+    dispatch(PlansActions.createRequest(transformedData))
+    resetForm()
   }
 
   return (
@@ -38,11 +45,7 @@ function AddPlan({ history }) {
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <Save
-            type='submit'
-            form='create-plan-form'
-            disabled={creating}
-          >
+          <Save type='submit' form='create-plan-form' disabled={creating}>
             Salvar
           </Save>
         </HeaderActions>

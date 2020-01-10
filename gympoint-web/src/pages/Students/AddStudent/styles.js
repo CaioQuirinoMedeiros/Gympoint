@@ -1,8 +1,6 @@
 import styled from 'styled-components'
-import { Form as UnformForm } from '@rocketseat/unform'
 
 import FullButtonComponent from '~/components/Buttons/FullButton'
-import FormInputComponent from '~/components/Inputs/FormInput'
 
 export const Container = styled.div`
   flex: 1;

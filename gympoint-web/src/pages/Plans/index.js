@@ -29,7 +29,7 @@ function Plans({ history }) {
   const columns = useMemo(
     () => [
       { Header: 'Título', accessor: 'title' },
-      { Header: 'Duração', accessor: 'duration' },
+      { Header: 'Duração', accessor: row => `${row.duration} meses` },
       { Header: 'Preço', accessor: 'price' },
       {
         accessor: props => <PlanOptions {...props} />,

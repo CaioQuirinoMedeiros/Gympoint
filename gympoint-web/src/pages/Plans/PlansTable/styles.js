@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Table = styled.table`
@@ -30,7 +30,8 @@ export const Table = styled.table`
       color: ${({ theme }) => theme.ink};
     }
 
-    &:nth-of-type(3) {
+    &:nth-of-type(3),
+    &:nth-of-type(2) {
       text-align: center;
     }
   }
@@ -40,7 +41,8 @@ export const Table = styled.table`
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 
-    &:nth-of-type(3) {
+    &:nth-of-type(3),
+    &:nth-of-type(2) {
       text-align: center;
     }
   }

@@ -1,19 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useField } from '@rocketseat/unform'
 
 import { Wrapper, Label, Input } from './styles'
 
 function CurrencyInput({ name, className, ...rest }) {
-  const ref = React.useRef()
+  const ref = useRef()
   const { fieldName, registerField, defaultValue, error } = useField(name)
 
-  React.useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: ref.current,
-      path: 'state.value'
-    })
+  useEffect(() => {
+    console.log('ref: ', ref.current)
+    if (ref.current) {
+      registerField({
+        name: fieldName,
+        ref: ref.current,
+        path: 'state.value'
+      })
+    }
   }, [ref.current, fieldName]) // eslint-disable-line
 
   return (
@@ -21,7 +24,6 @@ function CurrencyInput({ name, className, ...rest }) {
       {rest.label && <Label htmlFor={name}>{rest.label}</Label>}
       <Input
         name={fieldName}
-        aria-label={fieldName}
         defaultValue={defaultValue}
         ref={ref}
         prefix='R$ '
