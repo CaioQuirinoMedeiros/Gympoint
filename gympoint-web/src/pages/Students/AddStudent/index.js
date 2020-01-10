@@ -13,7 +13,7 @@ import {
   Title,
   HeaderActions,
   GoBack,
-  SaveStudent,
+  SaveButton,
 } from './styles'
 
 function AddStudent({ history }) {
@@ -47,13 +47,13 @@ function AddStudent({ history }) {
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveStudent
+          <SaveButton
             type='submit'
             form='create-student-form'
             disabled={creating}
           >
             Salvar
-          </SaveStudent>
+          </SaveButton>
         </HeaderActions>
       </HeaderContainer>
       <StudentForm onSubmit={handleSubmit} id='create-student-form' />

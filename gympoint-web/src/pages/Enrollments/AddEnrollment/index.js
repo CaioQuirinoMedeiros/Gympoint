@@ -2,8 +2,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import PlansActions from '~/store/modules/plans/actions'
-import PlanForm from '../PlanForm'
+import EnrollmentsActions from '~/store/modules/enrollments/actions'
+import EnrollmentForm from '../EnrollmentForm'
 
 import Loading from '~/components/Loading'
 
@@ -16,8 +16,8 @@ import {
   SaveButton
 } from './styles'
 
-function AddPlan({ history }) {
-  const creating = useSelector(({ students }) => students.creating)
+function AddEnrollment({ history }) {
+  const creating = useSelector(({ enrollments }) => enrollments.creating)
 
   const dispatch = useDispatch()
 
@@ -25,34 +25,28 @@ function AddPlan({ history }) {
     history.goBack()
   }
 
-  function transformDataToSend(data) {
-    return {
-      ...data,
-      price: parseInt(data.price * 100)
-    }
-  }
 
   function handleSubmit(data, { resetForm }) {
-    const transformedData = transformDataToSend(data)
-    dispatch(PlansActions.createRequest(transformedData))
-    resetForm()
+    console.log(data)
+    // dispatch(EnrollmentsActions.createRequest(data))
+    // resetForm()
   }
 
   return (
     <Container>
       <HeaderContainer>
-        <Title>Cadastro de plano</Title>
+        <Title>Cadastro de matrícula</Title>
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveButton type='submit' form='create-plan-form' disabled={creating}>
+          <SaveButton type='submit' form='create-enrollment-form' disabled={creating}>
             Salvar
           </SaveButton>
         </HeaderActions>
       </HeaderContainer>
-      <PlanForm onSubmit={handleSubmit} id='create-plan-form' />
+      <EnrollmentForm onSubmit={handleSubmit} id='create-enrollment-form' />
     </Container>
   )
 }
 
-export default AddPlan
+export default AddEnrollment

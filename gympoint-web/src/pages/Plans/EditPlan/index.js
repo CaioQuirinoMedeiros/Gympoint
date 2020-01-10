@@ -14,7 +14,7 @@ import {
   Title,
   HeaderActions,
   GoBack,
-  SaveStudent
+  SaveButton
 } from './styles'
 
 function EditPlan({ history }) {
@@ -61,9 +61,9 @@ function EditPlan({ history }) {
         <HeaderActions>
           {editing && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveStudent type='submit' form='edit-plan-form' disabled={editing}>
+          <SaveButton type='submit' form='edit-plan-form' disabled={editing}>
             Salvar
-          </SaveStudent>
+          </SaveButton>
         </HeaderActions>
       </HeaderContainer>
       <PlanForm

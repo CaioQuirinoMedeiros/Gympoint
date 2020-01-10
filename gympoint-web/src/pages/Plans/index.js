@@ -15,7 +15,7 @@ import {
   HeaderContainer,
   Title,
   HeaderActions,
-  AddStudentButton,
+  AddButton,
   Content
 } from './styles'
 
@@ -66,7 +66,7 @@ function Plans({ history }) {
       <HeaderContainer>
         <Title>Gerenciando planos</Title>
         <HeaderActions>
-          <AddStudentButton onClick={handleAddPlan}>Cadastrar</AddStudentButton>
+          <AddButton onClick={handleAddPlan}>Cadastrar</AddButton>
         </HeaderActions>
       </HeaderContainer>
       <Content>{fetching ? <Loading /> : <PlansTable table={table} />}</Content>

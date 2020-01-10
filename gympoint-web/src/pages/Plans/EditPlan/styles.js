@@ -37,7 +37,7 @@ export const GoBack = styled(FullButtonComponent).attrs({
   }
 `
 
-export const SaveStudent = styled(FullButtonComponent).attrs({
+export const SaveButton = styled(FullButtonComponent).attrs({
   icon: 'check'
 })`
   margin-left: 1rem;
