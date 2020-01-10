@@ -24,6 +24,7 @@ export const Table = styled.table`
     color: ${({ theme }) => theme.inkDark};
     position: relative;
     transition: all 0.2s;
+    text-transform: uppercase;
 
     &[title='Toggle SortBy']:hover {
       color: ${({ theme }) => theme.ink};
