@@ -9,10 +9,7 @@ function StudentsTable({ table }) {
         {table.headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-                sortable={column.canSort}
-              >
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                 {column.render('Header')}
                 {column.canSort && (
                   <Icon
