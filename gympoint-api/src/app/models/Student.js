@@ -9,6 +9,7 @@ class Student extends Model {
         age: Sequelize.INTEGER,
         weight: {
           type: Sequelize.INTEGER,
+          allowNull: true,
           validate: {
             min: 20000,
             max: 400000
@@ -16,10 +17,11 @@ class Student extends Model {
         },
         height: {
           type: Sequelize.INTEGER,
+          allowNull: true,
           validate: {
             min: 40,
             max: 250
-          }
+          },
         }
       },
       {
