@@ -27,6 +27,7 @@ class EnrollmentController {
   async index(req, res) {
     try {
       const enrollments = await Enrollment.findAll({
+        include: ['student', 'plan'],
         attributes: ['id', 'start_date', 'end_date', 'price', 'active']
       });
 
