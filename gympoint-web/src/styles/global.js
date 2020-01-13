@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import 'react-toastify/dist/ReactToastify.min.css'
-import 'react-datepicker/dist/react-datepicker.min.css';
+import 'react-datepicker/dist/react-datepicker.min.css'
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
@@ -88,6 +88,34 @@ export default createGlobalStyle`
     outline: none;
     font-family: inherit;
     color: inherit;
+
+    border-width: 1px;
+    border-color: ${({ theme }) => theme.dim};
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    transition: all 0.2s;
+
+    &::placeholder {
+      color: ${({ theme }) => theme.inkLight};
+    }
+
+    &:hover {
+      border-color: ${({ theme }) => theme.dimDark};
+    }
+
+    &:focus {
+      border-color: ${({ theme }) => theme.ink};
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: ${({ theme }) => theme.dim};
+      }
+    }
   }
 
   ul {

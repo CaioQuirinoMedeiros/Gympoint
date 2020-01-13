@@ -32,10 +32,9 @@ function AddPlan({ history }) {
     }
   }
 
-  function handleSubmit(data, { resetForm }) {
+  function handleSubmit(data) {
     const transformedData = transformDataToSend(data)
     dispatch(PlansActions.createRequest(transformedData))
-    resetForm()
   }
 
   return (
@@ -45,12 +44,12 @@ function AddPlan({ history }) {
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveButton type='submit' form='create-plan-form' disabled={creating}>
+          <SaveButton type='submit' form='opa' disabled={creating}>
             Salvar
           </SaveButton>
         </HeaderActions>
       </HeaderContainer>
-      <PlanForm onSubmit={handleSubmit} id='create-plan-form' />
+      <PlanForm onSubmit={handleSubmit} id='opa' />
     </Container>
   )
 }

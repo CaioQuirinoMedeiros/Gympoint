@@ -67,7 +67,7 @@ function EditPlan({ history }) {
         </HeaderActions>
       </HeaderContainer>
       <PlanForm
-        initialData={transformReceivedData(plan)}
+        initialValues={transformReceivedData(plan)}
         onSubmit={handleSubmit}
         id='edit-plan-form'
       />
