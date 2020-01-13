@@ -1,41 +1,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
+import { Formik } from 'formik'
 
 import studentSchema from '~/utils/validations/student'
 
-import {
-  Form,
-  Input,
-  InputsWrapper
-} from './styles'
+import { Form, Field, InputsWrapper } from './styles'
 
-function StudentForm(props) {
+function StudentForm({ onSubmit, initialValues, ...rest }) {
+  function renderForm(formik) {
+    return (
+      <Form {...rest}>
+        <Field label='Nome completo' name='name' />
+        <Field label='Email' name='email' />
+        <InputsWrapper>
+          <Field label='Idade' name='age' type='number' min={10} />
+          <Field
+            label='Peso (kg)'
+            name='weight'
+            type='number'
+            min={30}
+            max={400}
+            step={0.1}
+          />
+          <Field
+            label='Altura (m)'
+            name='height'
+            type='number'
+            max={2.5}
+            min={0.4}
+            step={0.01}
+          />
+        </InputsWrapper>
+      </Form>
+    )
+  }
+
   return (
-    <Form schema={studentSchema} {...props}>
-      <Input name='name' label='Nome completo' />
-      <Input name='email' label='Email' type='email' />
-      <InputsWrapper>
-        <Input name='age' label='Idade' type='number' />
-        <Input
-          name='weight'
-          label='Peso'
-          type='number'
-          min={30}
-          max={400}
-          step={0.1}
-          unit='kg'
-        />
-        <Input
-          name='height'
-          label='Altura'
-          type='number'
-          max={2.5}
-          min={0.4}
-          step={0.01}
-          unit='m'
-        />
-      </InputsWrapper>
-    </Form>
+    <Formik
+      onSubmit={onSubmit}
+      validationSchema={studentSchema}
+      initialValues={initialValues || {}}
+    >
+      {renderForm}
+    </Formik>
   )
 }
 

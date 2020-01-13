@@ -14,15 +14,14 @@ export const Form = styled(FormikForm)`
   padding: 2rem;
 `
 
-export const Field = styled(FieldComponent)`
-  margin-top: 1rem;
-`
+export const Field = styled(FieldComponent)``
 
 export const Currency = styled(CurrencyComponent)``
 
 export const CurrencyField = styled(CurrencyFieldComponent)``
 
 export const InputsWrapper = styled.div`
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 

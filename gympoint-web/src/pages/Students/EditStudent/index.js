@@ -69,7 +69,7 @@ function EditStudent({ history }) {
         </HeaderActions>
       </HeaderContainer>
       <StudentForm
-        initialData={transformReceivedData(student)}
+        initialValues={transformReceivedData(student)}
         onSubmit={handleSubmit}
         id='edit-student-form'
       />
