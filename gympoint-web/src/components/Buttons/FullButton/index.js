@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import { Button, Icon } from './styles'
 
-function FullButton({ children, loading, icon, iconProps, ...rest }) {
+function FullButton({ children, loading, disabled, icon, iconProps, ...rest }) {
   return (
-    <Button {...rest} disabled={loading}>
+    <Button disabled={loading || disabled} {...rest}>
       {icon && <Icon icon={icon} {...iconProps} />}
       {loading ? 'Carregando...' : children}
     </Button>

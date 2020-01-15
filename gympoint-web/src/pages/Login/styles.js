@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Form as FormikForm} from 'formik'
 
-import TextInputComponent from '~/components/Inputs/TextInput'
+import FieldComponent from '~/components/Inputs/Field'
 import FullButtonComponent from '~/components/Buttons/FullButton'
 
 export const Container = styled.section`
@@ -11,7 +12,7 @@ export const Container = styled.section`
   justify-content: center;
 `
 
-export const LoginForm = styled.form`
+export const LoginForm = styled(FormikForm)`
   display: flex;
   flex-direction: column;
   padding: 2.5rem;
@@ -30,7 +31,7 @@ export const Title = styled.h2`
   margin-bottom: 2rem;
 `
 
-export const Input = styled(TextInputComponent)`
+export const Field = styled(FieldComponent)`
   margin-bottom: 1rem;
 `
 
