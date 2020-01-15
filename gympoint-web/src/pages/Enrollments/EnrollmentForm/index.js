@@ -16,7 +16,6 @@ function EnrollmentForm({ onSubmit, initialValues, ...rest }) {
   const plans = useSelector(({ plans }) => plans.data)
 
   function renderForm(formik) {
-    console.log('Frmik: ', formik)
     const getPlan = planId => plans.find(plan => plan.id === planId)
 
     const getEndDate = () => {

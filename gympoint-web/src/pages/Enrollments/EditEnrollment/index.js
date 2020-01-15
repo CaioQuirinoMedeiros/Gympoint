@@ -43,15 +43,12 @@ function EditEnrollment({ history }) {
   }
 
   function handleSubmit(data) {
-    console.log('DATA: ', data)
     dispatch(EnrollmentsActions.editRequest(enrollmentId, data))
   }
 
   if (!enrollment) {
     return <Redirect to='enrollments' />
   }
-
-  console.log(enrollment)
 
   return (
     <Container>

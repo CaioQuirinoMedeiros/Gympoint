@@ -29,8 +29,6 @@ function Enrollments({ history }) {
   const data = useMemo(() => enrollments, [enrollments])
 
   const sorting = React.useCallback((props1, props2) => {
-    console.log('props1: ', props1)
-    console.log('props2: ', props2)
     return props2.values.active ? 1 : -1
   })
 
