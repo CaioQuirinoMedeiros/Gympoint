@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { Wrapper } from './styles'
+import { Wrapper, DatePicker } from './styles'
 
-function Input({ name, label, error, className, ...rest }) {
+function DateInput({ name, label, error, className, ...rest }) {
   return (
     <Wrapper className={className}>
       {label && <label htmlFor={name}>{label}</label>}
-      <input id={name} name={name} {...rest} />
+      <DatePicker name={name} {...rest} />
       {error && <span>{error}</span>}
     </Wrapper>
   )
 }
 
-export default Input
+export default DateInput

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Form as FormikForm } from 'formik'
+import { Form as UnformForm } from '@rocketseat/unform'
 
-import FieldComponent from '~/components/Inputs/Field'
+import FormInputComponent from '~/components/Inputs/FormInput'
 
-export const Form = styled(FormikForm)`
+export const Form = styled(UnformForm)`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const Form = styled(FormikForm)`
   padding: 2rem;
 `
 
-export const Field = styled(FieldComponent)``
+export const Input = styled(FormInputComponent)``
 
 export const InputsWrapper = styled.div`
   margin-top: 1rem;

@@ -11,7 +11,7 @@ export default Yup.object().shape({
     .integer('A altura deve ser um inteiro'),
   height: Yup.number()
     .typeError('A altura deve ser um número inteiro')
-    .min(0.4, 'Altura mínima de 50cm')
+    .min(0.5, 'Altura mínima de 50cm')
     .max(2.5, 'Altura máxima de 2,5m')
     .nullable(),
   weight: Yup.number('O peso deve ser um número')

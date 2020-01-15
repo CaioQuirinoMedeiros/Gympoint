@@ -27,7 +27,7 @@ function StudentForm({ onSubmit, initialValues, ...rest }) {
             name='height'
             type='number'
             max={2.5}
-            min={0.4}
+            min={0.5}
             step={0.01}
           />
         </InputsWrapper>

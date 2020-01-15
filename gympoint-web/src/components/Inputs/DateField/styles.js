@@ -4,12 +4,35 @@ import ReactDatePicker from 'react-datepicker'
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  padding-bottom: 1.6rem;
+  padding-right: ${({ padding }) => (padding ? `${padding + 2}px` : 0)};
+
+  label {
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    color: ${({ theme }) => theme.inkDark};
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  input {
+    height: 38px;
+  }
+
+  span {
+    position: absolute;
+    bottom: 0;
+    font-size: 1rem;
+    height: 1.4rem;
+    color: ${({ theme }) => theme.negative};
+  }
 `
 
 export const DatePicker = styled(ReactDatePicker)`
-width: 100%;
   height: 38px;
-  border-width: 1px;
+   width: 100%;
+  /*border-width: 1px;
   border-color: ${({ theme }) => theme.dim};
   padding-left: 1rem;
   padding-right: 1rem;
@@ -27,13 +50,5 @@ width: 100%;
 
   &:focus {
     border-color: ${({ theme }) => theme.ink};
-  }
-`
-
-export const Label = styled.label`
-  text-transform: uppercase;
-  margin-bottom: 3px;
-  color: ${({ theme }) => theme.inkDark};
-  font-size: 1.4rem;
-  font-weight: bold;
+  } */
 `
