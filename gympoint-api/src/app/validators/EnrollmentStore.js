@@ -4,17 +4,19 @@ import Student from '../models/Student';
 import Plan from '../models/Plan';
 
 const bodySchema = Yup.object().shape({
-  student_id: Yup.number('O id deve ser um número')
+  student_id: Yup.number()
+    .typeError('O id deve ser um número')
     .integer('O id do aluno deve ser um inteiro')
     .required('O id do aluno é obrigatório')
     .positive('O id deve ser um inteiro positivo'),
-  plan_id: Yup.number('O id deve ser um número')
+  plan_id: Yup.number()
+    .typeError('O id deve ser um número')
     .integer('O id do plano deve ser um inteiro')
     .required('O id do plano é obrigatório')
     .positive('O id deve ser um inteiro positivo'),
-  start_date: Yup.date('A data de início deve ser uma data válida')
+  start_date: Yup.date()
+    .typeError('A data de início deve ser uma data válida')
     .required('A data de início é obrigatório')
-    .min(new Date(), 'A data não pode ser uma data passada')
 });
 
 export default async (req, res, next) => {
@@ -38,8 +40,8 @@ export default async (req, res, next) => {
         .send({ error: `O plano ${plan_id} não foi encontrado` });
     }
 
-    req.student = student
-    req.plan = plan
+    req.student = student;
+    req.plan = plan;
 
     return next();
   } catch (err) {

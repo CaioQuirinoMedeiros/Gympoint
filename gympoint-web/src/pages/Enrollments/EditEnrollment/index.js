@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Redirect } from 'react-router-dom'
 
 import EnrollmentsActions from '~/store/modules/enrollments/actions'
+import { parse } from '~/utils/helpers/date'
 import EnrollmentForm from '../EnrollmentForm'
 
 import Loading from '~/components/Loading'
@@ -33,13 +34,24 @@ function EditEnrollment({ history }) {
     history.goBack()
   }
 
+  function transformReceivedData(data) {
+    return {
+      student_id: data.student.id,
+      plan_id: data.plan.id,
+      start_date: parse(data.start_date)
+    }
+  }
+
   function handleSubmit(data) {
+    console.log('DATA: ', data)
     dispatch(EnrollmentsActions.editRequest(enrollmentId, data))
   }
 
   if (!enrollment) {
     return <Redirect to='enrollments' />
   }
+
+  console.log(enrollment)
 
   return (
     <Container>
@@ -48,13 +60,17 @@ function EditEnrollment({ history }) {
         <HeaderActions>
           {editing && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveButton type='submit' form='edit-enrollment-form' disabled={editing}>
+          <SaveButton
+            type='submit'
+            form='edit-enrollment-form'
+            disabled={editing}
+          >
             Salvar
           </SaveButton>
         </HeaderActions>
       </HeaderContainer>
       <EnrollmentForm
-        initialData={enrollment}
+        initialValues={transformReceivedData(enrollment)}
         onSubmit={handleSubmit}
         id='edit-enrollment-form'
       />

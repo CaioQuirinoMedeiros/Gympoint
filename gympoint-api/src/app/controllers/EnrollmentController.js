@@ -63,7 +63,9 @@ class EnrollmentController {
     const { enrollment_id } = req.params;
 
     try {
-      const enrollment = await Enrollment.findByPk(enrollment_id);
+      const enrollment = await Enrollment.findByPk(enrollment_id, {
+        include: ['student', 'plan']
+      });
 
       if (!enrollment) {
         return res

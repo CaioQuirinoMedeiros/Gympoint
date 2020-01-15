@@ -44,12 +44,12 @@ function AddPlan({ history }) {
         <HeaderActions>
           {creating && <Loading size={30} />}
           <GoBack onClick={goBack}>Voltar</GoBack>
-          <SaveButton type='submit' form='opa' disabled={creating}>
+          <SaveButton type='submit' form='create-plan-form' disabled={creating}>
             Salvar
           </SaveButton>
         </HeaderActions>
       </HeaderContainer>
-      <PlanForm onSubmit={handleSubmit} id='opa' />
+      <PlanForm onSubmit={handleSubmit} id='create-plan-form' />
     </Container>
   )
 }

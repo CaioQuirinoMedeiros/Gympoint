@@ -27,11 +27,8 @@ function AddEnrollment({ history }) {
 
   function handleSubmit(data, { resetForm }) {
     console.log('data: ', data)
-    // const { student_id, plan_id, start_date } = data
-    // dispatch(
-    //   EnrollmentsActions.createRequest({ student_id, plan_id, start_date })
-    // )
-    // resetForm()
+    dispatch(EnrollmentsActions.createRequest(data))
+    resetForm()
   }
 
   return (
