@@ -20,7 +20,7 @@ import {
 } from './styles'
 
 function Plans({ history }) {
-  const fetching = false
+  const fetching = useSelector(({ plans }) => plans.fetching)
   const plans = useSelector(({ plans }) => plans.data)
 
   const dispatch = useDispatch()

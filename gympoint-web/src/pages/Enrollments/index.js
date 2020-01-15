@@ -21,7 +21,7 @@ import {
 } from './styles'
 
 function Enrollments({ history }) {
-  const fetching = false
+  const fetching = useSelector(({ enrollments }) => enrollments.fetching)
   const enrollments = useSelector(({ enrollments }) => enrollments.data)
 
   const dispatch = useDispatch()
