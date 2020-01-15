@@ -27,6 +27,7 @@ class EnrollmentController {
   async index(req, res) {
     try {
       const enrollments = await Enrollment.findAll({
+        include: ['student', 'plan'],
         attributes: ['id', 'start_date', 'end_date', 'price', 'active']
       });
 
@@ -62,7 +63,9 @@ class EnrollmentController {
     const { enrollment_id } = req.params;
 
     try {
-      const enrollment = await Enrollment.findByPk(enrollment_id);
+      const enrollment = await Enrollment.findByPk(enrollment_id, {
+        include: ['student', 'plan']
+      });
 
       if (!enrollment) {
         return res

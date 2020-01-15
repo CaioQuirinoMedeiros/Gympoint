@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Table = styled.table`
   flex: 1;
@@ -19,8 +20,15 @@ export const Table = styled.table`
   th {
     text-align: left;
     font-size: 1.6rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     color: ${({ theme }) => theme.inkDark};
+    position: relative;
+    transition: all 0.2s;
+    text-transform: uppercase;
+
+    &[title='Toggle SortBy']:hover {
+      color: ${({ theme }) => theme.ink};
+    }
 
     &:nth-of-type(3) {
       text-align: center;
@@ -36,4 +44,10 @@ export const Table = styled.table`
       text-align: center;
     }
   }
+`
+
+export const Icon = styled(FontAwesomeIcon)`
+  margin-left: 1rem;
+  opacity: ${({ icon }) => (icon === 'sort' ? 0.4 : 1)};
+  transition: all 0.2s;
 `

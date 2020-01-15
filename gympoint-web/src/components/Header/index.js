@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import AuthActions from '~/store/modules/auth/actions'
 
+import ConfirmWrapper from '~/components/ConfirmWrapper'
+
 import {
   Container,
   Left,
@@ -31,7 +33,9 @@ function Header() {
       </Left>
       <Right>
         <UserName>{user.name}</UserName>
-        <LogoutButton onClick={handleLogout}>Sair do sistema</LogoutButton>
+        <ConfirmWrapper onClick={handleLogout}>
+          <LogoutButton>Sair do sistema</LogoutButton>
+        </ConfirmWrapper>
       </Right>
     </Container>
   )

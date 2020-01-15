@@ -1,4 +1,22 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faChevronLeft, faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import {
+  faPlus,
+  faChevronLeft,
+  faCheck,
+  faChevronDown,
+  faChevronUp,
+  faSort,
+  faSortUp,
+  faSortDown,
+} from '@fortawesome/free-solid-svg-icons'
 
-export default library.add(faPlus, faChevronLeft, faCheck, faChevronDown)
+export default library.add(
+  faPlus,
+  faChevronLeft,
+  faCheck,
+  faChevronDown,
+  faChevronUp,
+  faSort,
+  faSortUp,
+  faSortDown,
+)

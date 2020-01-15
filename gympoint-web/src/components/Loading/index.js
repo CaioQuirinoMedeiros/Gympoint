@@ -4,17 +4,20 @@ import styled from 'styled-components'
 const Spinner = styled.div`
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  /* width: 80px;
+  height: 80px; */
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
 
   div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid ${({ theme }) => theme.primary};
+    width: ${({ size }) => size}px;
+    height: ${({ size }) => size}px;
+    border-width: ${({ size }) => size / 5}px;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.primary};
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: ${({ theme }) => theme.primary} transparent transparent
@@ -40,15 +43,19 @@ const Spinner = styled.div`
   }
 `
 
-function Loading() {
+function Loading(props) {
   return (
-    <Spinner>
+    <Spinner {...props}>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </Spinner>
   )
+}
+
+Loading.defaultProps = {
+  size: 64
 }
 
 export default Loading

@@ -1,9 +1,100 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
-// import { Container } from './styles';
+import { formatStringDate } from '~/utils/helpers/date'
+import EnrollmentsActions from '~/store/modules/enrollments/actions'
 
-export default function Enrollments() {
+import EnrollmentOptions from './EnrollmentOptions'
+import EnrollmentsTable from './EnrollmentsTable'
+import Loading from '~/components/Loading'
+
+import {
+  Container,
+  HeaderContainer,
+  Title,
+  HeaderActions,
+  AddButton,
+  Content,
+  Check
+} from './styles'
+
+function Enrollments({ history }) {
+  const fetching = false
+  const enrollments = useSelector(({ enrollments }) => enrollments.data)
+
+  const dispatch = useDispatch()
+
+  const data = useMemo(() => enrollments, [enrollments])
+
+  const sorting = React.useCallback((props1, props2) => {
+    console.log('props1: ', props1)
+    console.log('props2: ', props2)
+    return props2.values.active ? 1 : -1
+  })
+
+  const columns = useMemo(
+    () => [
+      { Header: 'Aluno', accessor: 'student.name' },
+      { Header: 'Plano', accessor: 'plan.title' },
+      {
+        Header: 'Início',
+        accessor: 'start_date',
+        Cell: ({ cell: { value } }) => formatStringDate(value)
+      },
+      {
+        Header: 'Término',
+        accessor: 'end_date',
+        Cell: ({ cell: { value } }) => formatStringDate(value)
+      },
+      {
+        Header: 'Ativa',
+        accessor: 'active',
+        Cell: ({ cell: { value } }) => (
+          <Check className={value ? 'active' : undefined} />
+        ),
+        sortType: sorting
+      },
+      {
+        accessor: props => <EnrollmentOptions {...props} />,
+        id: 'actions',
+        disableSortBy: true
+      }
+    ],
+    []
+  )
+
+  const table = useTable(
+    {
+      columns,
+      data
+    },
+    useGlobalFilter,
+    useSortBy
+  )
+
+  useEffect(() => {
+    dispatch(EnrollmentsActions.getRequest())
+  }, [])
+
+  function handleAddEnrollment() {
+    history.push('enrollments/register')
+  }
+
   return (
-    <div>MATRÍCULAS!!!!!!!!!!!!!!</div>
-  );
+    <Container>
+      <HeaderContainer>
+        <Title>Gerenciando Matrículas</Title>
+        <HeaderActions>
+          <AddButton onClick={handleAddEnrollment}>Cadastrar</AddButton>
+        </HeaderActions>
+      </HeaderContainer>
+      <Content>
+        {fetching ? <Loading /> : <EnrollmentsTable table={table} />}
+      </Content>
+    </Container>
+  )
 }
+
+export default Enrollments

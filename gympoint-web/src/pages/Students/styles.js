@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 import FullButtonComponent from '~/components/Buttons/FullButton'
 import TextInputComponent from '~/components/Inputs/TextInput'
+import ErrorBoundary from '~/components/ErrorBoundary'
 
-export const Container = styled.div`
+export const Container = styled(ErrorBoundary)`
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-width: 100rem;
 `
 
 export const HeaderContainer = styled.div`

@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
+import ErrorBoundary from '~/components/ErrorBoundary'
 import BasicButtonComponent from '~/components/Buttons/BasicButton'
 import NavBarComponent from './NavBar'
 import NavDrawerComponent from './NavDrawer'
 
 const mediaWidth = '45em'
 
-export const Container = styled.div`
+export const Container = styled(ErrorBoundary)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +17,7 @@ export const Container = styled.div`
   border-style: solid;
   border-color: red;
   border-color: ${({ theme }) => theme.dim};
+  z-index: 10;
 `
 
 export const Left = styled.div`

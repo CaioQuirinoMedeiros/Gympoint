@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
-import StudentActions from '~/store/modules/student/actions'
+import StudentActions from '~/store/modules/students/actions'
 
 import StudentOptions from './StudentOptions'
 import StudentTable from './StudentsTable'
@@ -19,19 +18,19 @@ import {
   Content
 } from './styles'
 
-export default function Students() {
-  const fetching = useSelector(({ student }) => student.fetching)
-  const students = useSelector(({ student }) => student.data)
+function Students({ history }) {
+  const fetching = useSelector(({ students }) => students.fetching)
+  const students = useSelector(({ students }) => students.data)
 
   const data = useMemo(() => students, [students])
 
   const columns = useMemo(
     () => [
-      { Header: 'Name', accessor: 'name' },
+      { Header: 'Nome', accessor: 'name' },
       { Header: 'Email', accessor: 'email' },
-      { Header: 'Age', accessor: 'age' },
+      { Header: 'Idade', accessor: 'age' },
       {
-        accessor: StudentOptions,
+        accessor: props => <StudentOptions {...props} />,
         id: 'actions',
         disableSortBy: true
       }
@@ -52,14 +51,20 @@ export default function Students() {
 
   useEffect(() => {
     dispatch(StudentActions.getRequest())
-  }, [])
+  }, [dispatch])
+
+  function handleAddStudent() {
+    history.push('students/register')
+  }
 
   return (
     <Container>
       <HeaderContainer>
         <Title>Gerenciando alunos</Title>
         <HeaderActions>
-          <AddStudentButton>Cadastrar</AddStudentButton>
+          <AddStudentButton onClick={handleAddStudent}>
+            Cadastrar
+          </AddStudentButton>
           <SearchStudent
             name='searchStudent'
             value={table.globalFilter}
@@ -73,3 +78,5 @@ export default function Students() {
     </Container>
   )
 }
+
+export default Students
