@@ -13,7 +13,7 @@ import {
   Title,
   HeaderActions,
   GoBack,
-  SaveButton,
+  SaveButton
 } from './styles'
 
 function AddStudent({ history }) {
@@ -36,8 +36,6 @@ function AddStudent({ history }) {
   function handleSubmit(data, { resetForm }) {
     const transformedData = transformDataToSend(data)
     dispatch(StudentsActions.createRequest(transformedData))
-
-    resetForm()
   }
 
   return (

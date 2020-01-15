@@ -25,10 +25,8 @@ function AddEnrollment({ history }) {
     history.goBack()
   }
 
-  function handleSubmit(data, { resetForm }) {
-    console.log('data: ', data)
+  function handleSubmit(data) {
     dispatch(EnrollmentsActions.createRequest(data))
-    resetForm()
   }
 
   return (
