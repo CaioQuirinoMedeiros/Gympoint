@@ -64,7 +64,7 @@ function Plans({ history }) {
   return (
     <Container>
       <HeaderContainer>
-        <Title>Gerenciando planos</Title>
+        <Title>Gerenciando Planos</Title>
         <HeaderActions>
           <AddButton onClick={handleAddPlan}>Cadastrar</AddButton>
         </HeaderActions>

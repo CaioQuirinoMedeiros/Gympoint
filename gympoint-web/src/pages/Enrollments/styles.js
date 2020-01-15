@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import ErrorBoundary from '~/components/ErrorBoundary'
 import FullButtonComponent from '~/components/Buttons/FullButton'
 
-export const Container = styled.div`
+export const Container = styled(ErrorBoundary)`
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-width: 100rem;
 `
 
 export const HeaderContainer = styled.div`

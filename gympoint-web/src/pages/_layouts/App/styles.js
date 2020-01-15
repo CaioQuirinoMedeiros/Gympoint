@@ -12,5 +12,4 @@ export const Content = styled.main`
   display: flex;
   justify-content: center;
   padding: 4rem;
-
 `

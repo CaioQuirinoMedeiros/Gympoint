@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable, useSortBy, useGlobalFilter } from 'react-table'
@@ -52,7 +51,7 @@ function Students({ history }) {
 
   useEffect(() => {
     dispatch(StudentActions.getRequest())
-  }, [])
+  }, [dispatch])
 
   function handleAddStudent() {
     history.push('students/register')
