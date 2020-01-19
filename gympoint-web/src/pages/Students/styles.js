@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import FullButtonComponent from '~/components/Buttons/FullButton'
-import TextInputComponent from '~/components/Inputs/TextInput'
+import InputComponent from '~/components/Inputs/Input'
 import ErrorBoundary from '~/components/ErrorBoundary'
 
 export const Container = styled(ErrorBoundary)`
@@ -31,7 +31,7 @@ export const AddStudentButton = styled(FullButtonComponent).attrs({
   icon: 'plus'
 })``
 
-export const SearchStudent = styled(TextInputComponent).attrs({
+export const SearchStudent = styled(InputComponent).attrs({
   placeholder: 'Buscar aluno'
 })`
   margin-left: 1.5rem;
