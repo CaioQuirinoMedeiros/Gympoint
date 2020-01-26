@@ -4,9 +4,9 @@ import CurrencyInput from 'react-currency-input'
 
 import { Wrapper } from '~/components/Inputs/Input/styles'
 
-function Currency({ label, name, error, className, ...rest }) {
+function Currency ({ label, name, error, className, ...rest }) {
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} error={!!error}>
       {label && <label htmlFor={name}>{label}</label>}
       <CurrencyInput
         id={name}

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,6 +17,15 @@ export const Wrapper = styled.div`
 
   input {
     height: 38px;
+    ${({ error }) =>
+      error &&
+      css`
+        &,
+        &:hover,
+        &:focus {
+          border-color: ${({ theme }) => theme.negative};
+        }
+      `}
   }
 
   span {
