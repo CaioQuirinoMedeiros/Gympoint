@@ -63,6 +63,10 @@ export default createGlobalStyle`
     font-weight: 400;
     line-height: 1.5;
     color: ${({ theme }) => theme.ink};
+
+    &.no-scroll {
+      overflow-y: hidden;
+    }
   }
   
   #root {
@@ -82,7 +86,8 @@ export default createGlobalStyle`
     color: inherit;
   }
 
-  input {
+  input,
+  textarea {
     border-style: solid;
     outline: none;
     font-family: inherit;
@@ -94,7 +99,8 @@ export default createGlobalStyle`
     padding-right: 1rem;
     font-size: 1.4rem;
     border-radius: 5px;
-    transition: all 0.2s;
+    resize: vertical;
+    transition: border 0.2s;
 
     &::placeholder {
       color: ${({ theme }) => theme.inkLight};

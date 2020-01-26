@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import ErrorBoundary from '~/components/ErrorBoundary'
 import FullButtonComponent from '~/components/Buttons/FullButton'
+import ErrorBoundary from '~/components/ErrorBoundary'
 
 export const Container = styled(ErrorBoundary)`
   flex: 1;
@@ -24,8 +24,16 @@ export const Title = styled.h2`
 
 export const HeaderActions = styled.div`
   display: flex;
-  align-items: center;
 `
+
+export const Content = styled.div`
+  flex: 1;
+  display: flex;
+  background: ${({ theme }) => theme.white};
+  border-radius: 5px;
+  padding: 2rem;
+`
+
 
 export const GoBack = styled(FullButtonComponent).attrs({
   icon: 'chevron-left'

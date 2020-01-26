@@ -14,18 +14,18 @@ import {
   HeaderActions,
   GoBack,
   SaveButton
-} from './styles'
+} from '~/pages/components'
 
-function AddEnrollment({ history }) {
+function AddEnrollment ({ history }) {
   const creating = useSelector(({ enrollments }) => enrollments.creating)
 
   const dispatch = useDispatch()
 
-  function goBack() {
+  function goBack () {
     history.goBack()
   }
 
-  function handleSubmit(data) {
+  function handleSubmit (data) {
     dispatch(EnrollmentsActions.createRequest(data))
   }
 

@@ -14,7 +14,7 @@ import {
   HeaderActions,
   GoBack,
   SaveButton
-} from './styles'
+} from '~/pages/components'
 
 function AddPlan({ history }) {
   const creating = useSelector(({ students }) => students.creating)

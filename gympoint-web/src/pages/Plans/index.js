@@ -15,11 +15,11 @@ import {
   HeaderContainer,
   Title,
   HeaderActions,
-  AddButton,
   Content
-} from './styles'
+} from '~/pages/components'
+import { AddButton } from './styles'
 
-function Plans({ history }) {
+function Plans ({ history }) {
   const fetching = useSelector(({ plans }) => plans.fetching)
   const plans = useSelector(({ plans }) => plans.data)
 
@@ -57,7 +57,7 @@ function Plans({ history }) {
     dispatch(PlansActions.getRequest())
   }, [])
 
-  function handleAddPlan() {
+  function handleAddPlan () {
     history.push('plans/register')
   }
 

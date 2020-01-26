@@ -11,21 +11,21 @@ import {
   Container,
   HeaderContainer,
   Title,
-  HeaderActions,
   GoBack,
-  SaveButton
-} from './styles'
+  SaveButton,
+  HeaderActions
+} from '~/pages/components'
 
-function AddStudent({ history }) {
+function AddStudent ({ history }) {
   const creating = useSelector(({ students }) => students.creating)
 
   const dispatch = useDispatch()
 
-  function goBack() {
+  function goBack () {
     history.goBack()
   }
 
-  function transformDataToSend(data) {
+  function transformDataToSend (data) {
     return {
       ...data,
       height: data.height ? parseInt(data.height * 100) : null,
@@ -33,7 +33,7 @@ function AddStudent({ history }) {
     }
   }
 
-  function handleSubmit(data, { resetForm }) {
+  function handleSubmit (data, { resetForm }) {
     const transformedData = transformDataToSend(data)
     dispatch(StudentsActions.createRequest(transformedData))
   }

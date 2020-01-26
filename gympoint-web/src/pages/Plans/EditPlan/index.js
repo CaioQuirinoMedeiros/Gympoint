@@ -15,9 +15,9 @@ import {
   HeaderActions,
   GoBack,
   SaveButton
-} from './styles'
+} from '~/pages/components'
 
-function EditPlan({ history }) {
+function EditPlan ({ history }) {
   const { planId } = useParams()
 
   const editing = useSelector(({ plans }) => plans.editing)
@@ -27,25 +27,25 @@ function EditPlan({ history }) {
 
   const dispatch = useDispatch()
 
-  function goBack() {
+  function goBack () {
     history.goBack()
   }
 
-  function transformDataToSend(data) {
+  function transformDataToSend (data) {
     return {
       ...data,
       price: parseInt(data.price * 100)
     }
   }
 
-  function transformReceivedData(data) {
+  function transformReceivedData (data) {
     return {
       ...data,
       price: data.price ? data.price / 100 : null
     }
   }
 
-  function handleSubmit(data) {
+  function handleSubmit (data) {
     const transformedData = transformDataToSend(data)
     dispatch(PlansActions.editRequest(planId, transformedData))
   }

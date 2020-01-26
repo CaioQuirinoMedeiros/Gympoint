@@ -11,14 +11,13 @@ import Loading from '~/components/Loading'
 import {
   Container,
   HeaderContainer,
-  Title,
   HeaderActions,
-  AddStudentButton,
-  SearchStudent,
-  Content
-} from './styles'
+  Content,
+  Title
+} from '~/pages/components'
+import { AddStudentButton, SearchStudent } from './styles'
 
-function Students({ history }) {
+function Students ({ history }) {
   const fetching = useSelector(({ students }) => students.fetching)
   const students = useSelector(({ students }) => students.data)
 
@@ -53,14 +52,14 @@ function Students({ history }) {
     dispatch(StudentActions.getRequest())
   }, [dispatch])
 
-  function handleAddStudent() {
+  function handleAddStudent () {
     history.push('students/register')
   }
 
   return (
     <Container>
       <HeaderContainer>
-        <Title>Gerenciando alunos</Title>
+        <Title>Gerenciando Alunos</Title>
         <HeaderActions>
           <AddStudentButton onClick={handleAddStudent}>
             Cadastrar

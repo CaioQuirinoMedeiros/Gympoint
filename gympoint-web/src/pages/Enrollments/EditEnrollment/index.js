@@ -16,9 +16,9 @@ import {
   HeaderActions,
   GoBack,
   SaveButton
-} from './styles'
+} from '~/pages/components'
 
-function EditEnrollment({ history }) {
+function EditEnrollment ({ history }) {
   const { enrollmentId } = useParams()
 
   const editing = useSelector(({ enrollments }) => enrollments.editing)
@@ -30,11 +30,11 @@ function EditEnrollment({ history }) {
 
   const dispatch = useDispatch()
 
-  function goBack() {
+  function goBack () {
     history.goBack()
   }
 
-  function transformReceivedData(data) {
+  function transformReceivedData (data) {
     return {
       student_id: data.student.id,
       plan_id: data.plan.id,
@@ -42,7 +42,7 @@ function EditEnrollment({ history }) {
     }
   }
 
-  function handleSubmit(data) {
+  function handleSubmit (data) {
     dispatch(EnrollmentsActions.editRequest(enrollmentId, data))
   }
 

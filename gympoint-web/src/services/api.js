@@ -37,6 +37,10 @@ const create = () => {
   const editEnrollment = (id, data) => api.put(`enrollments/${id}`, data)
   const showEnrollment = id => api.get(`enrollments/${id}`)
 
+  // Help Orders
+  const getPendingHelpOrders = () => api.get('help-orders')
+  const answerHelpOrder = (id, data) => api.post(`help-orders/${id}/answer`, data)
+
   return {
     setAuthToken,
     removeAuthToken,
@@ -59,7 +63,10 @@ const create = () => {
     createEnrollment,
     deleteEnrollment,
     editEnrollment,
-    showEnrollment
+    showEnrollment,
+
+    getPendingHelpOrders,
+    answerHelpOrder
   }
 }
 

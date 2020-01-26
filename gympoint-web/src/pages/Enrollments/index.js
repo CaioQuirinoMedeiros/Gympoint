@@ -15,12 +15,11 @@ import {
   HeaderContainer,
   Title,
   HeaderActions,
-  AddButton,
-  Content,
-  Check
-} from './styles'
+  Content
+} from '~/pages/components'
+import { AddButton, Check } from './styles'
 
-function Enrollments({ history }) {
+function Enrollments ({ history }) {
   const fetching = useSelector(({ enrollments }) => enrollments.fetching)
   const enrollments = useSelector(({ enrollments }) => enrollments.data)
 
@@ -76,7 +75,7 @@ function Enrollments({ history }) {
     dispatch(EnrollmentsActions.getRequest())
   }, [])
 
-  function handleAddEnrollment() {
+  function handleAddEnrollment () {
     history.push('enrollments/register')
   }
 

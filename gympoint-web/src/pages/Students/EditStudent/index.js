@@ -15,9 +15,9 @@ import {
   HeaderActions,
   GoBack,
   SaveButton
-} from './styles'
+} from '~/pages/components'
 
-function EditStudent({ history }) {
+function EditStudent ({ history }) {
   const { studentId } = useParams()
 
   const editing = useSelector(({ students }) => students.editing)
@@ -27,11 +27,11 @@ function EditStudent({ history }) {
 
   const dispatch = useDispatch()
 
-  function goBack() {
+  function goBack () {
     history.goBack()
   }
 
-  function transformDataToSend(data) {
+  function transformDataToSend (data) {
     return {
       ...data,
       height: data.height ? parseInt(data.height * 100) : null,
@@ -39,7 +39,7 @@ function EditStudent({ history }) {
     }
   }
 
-  function transformReceivedData(data) {
+  function transformReceivedData (data) {
     return {
       ...data,
       height: data.height ? data.height / 100 : null,
@@ -47,7 +47,7 @@ function EditStudent({ history }) {
     }
   }
 
-  function handleSubmit(data) {
+  function handleSubmit (data) {
     const transformedData = transformDataToSend(data)
     dispatch(StudentsActions.editRequest(studentId, transformedData))
   }
