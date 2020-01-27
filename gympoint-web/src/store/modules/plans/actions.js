@@ -10,10 +10,7 @@ export const Types = {
   DELETE_FAILURE: '@plans/DELETE_FAILURE',
   EDIT_REQUEST: '@plans/EDIT_REQUEST',
   EDIT_SUCCESS: '@plans/EDIT_SUCCESS',
-  EDIT_FAILURE: '@plans/EDIT_FAILURE',
-  SHOW_REQUEST: '@plans/SHOW_REQUEST',
-  SHOW_SUCCESS: '@plans/SHOW_SUCCESS',
-  SHOW_FAILURE: '@plans/SHOW_FAILURE'
+  EDIT_FAILURE: '@plans/EDIT_FAILURE'
 }
 
 export default {
@@ -44,6 +41,7 @@ export default {
     type: Types.CREATE_FAILURE,
     payload: { error }
   }),
+
   deleteRequest: id => ({
     type: Types.DELETE_REQUEST,
     payload: { id }
@@ -70,21 +68,6 @@ export default {
 
   editFailure: error => ({
     type: Types.EDIT_FAILURE,
-    payload: { error }
-  }),
-
-  showRequest: id => ({
-    type: Types.SHOW_REQUEST,
-    payload: { id }
-  }),
-
-  showSuccess: plan => ({
-    type: Types.SHOW_SUCCESS,
-    payload: { plan }
-  }),
-
-  showFailure: error => ({
-    type: Types.SHOW_FAILURE,
     payload: { error }
   })
 }

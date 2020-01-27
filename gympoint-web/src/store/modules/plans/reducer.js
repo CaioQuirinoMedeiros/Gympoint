@@ -8,9 +8,7 @@ const INITIAL_STATE = {
   fetching: false,
   editing: false,
   deleting: false,
-  fetchingOne: false,
   fetchingError: null,
-  fetchingOneError: null
 }
 
 export default function plans(state = INITIAL_STATE, action) {
@@ -73,20 +71,6 @@ export default function plans(state = INITIAL_STATE, action) {
       }
       case PlansTypes.EDIT_FAILURE: {
         draft.editing = false
-        break
-      }
-      case PlansTypes.SHOW_REQUEST: {
-        draft.fetchingOne = true
-        break
-      }
-      case PlansTypes.SHOW_SUCCESS: {
-        draft.plan = action.payload.plan
-        draft.fetchingOne = false
-        break
-      }
-      case PlansTypes.SHOW_FAILURE: {
-        draft.fetchingOne = false
-        draft.fetchingOneError = action.payload.error
         break
       }
       default:

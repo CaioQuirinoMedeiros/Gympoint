@@ -75,20 +75,6 @@ export default function enrollments(state = INITIAL_STATE, action) {
         draft.editing = false
         break
       }
-      case EnrollmentsTypes.SHOW_REQUEST: {
-        draft.fetchingOne = true
-        break
-      }
-      case EnrollmentsTypes.SHOW_SUCCESS: {
-        draft.enrollment = action.payload.enrollment
-        draft.fetchingOne = false
-        break
-      }
-      case EnrollmentsTypes.SHOW_FAILURE: {
-        draft.fetchingOne = false
-        draft.fetchingOneError = action.payload.error
-        break
-      }
       default:
         return state
     }

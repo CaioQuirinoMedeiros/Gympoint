@@ -8,6 +8,7 @@ export default {
   inkLight: '#999',
   positive: '#42cb59',
   positiveLight: '#3ede59',
+  warn: '#f5bc42',
   negative: '#de3b3b',
   negativeLight: '#ed3434',
   dimDark: '#c3c3c3',

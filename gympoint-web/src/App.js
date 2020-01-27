@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { PersistGate } from 'redux-persist/integration/react'
-import { ToastContainer } from 'react-toastify'
+// import { ToastContainer } from 'react-toastify'
 import 'dotenv/config'
 
 import '~/services/icons'
@@ -13,9 +13,10 @@ import theme from '~/styles/theme'
 
 import Routes from '~/routes'
 
+import Toastify from '~/components/Toastify'
 import GlobalStyle from '~/styles/global'
 
-function App() {
+function App () {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -25,7 +26,7 @@ function App() {
             <Routes />
           </BrowserRouter>
           <GlobalStyle />
-          <ToastContainer autoClose={3500} pauseOnHover={false} />
+          <Toastify />
         </PersistGate>
       </ThemeProvider>
     </Provider>

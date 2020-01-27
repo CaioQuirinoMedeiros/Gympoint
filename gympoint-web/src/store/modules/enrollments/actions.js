@@ -72,19 +72,4 @@ export default {
     type: Types.EDIT_FAILURE,
     payload: { error }
   }),
-
-  showRequest: id => ({
-    type: Types.SHOW_REQUEST,
-    payload: { id }
-  }),
-
-  showSuccess: enrollment => ({
-    type: Types.SHOW_SUCCESS,
-    payload: { enrollment }
-  }),
-
-  showFailure: error => ({
-    type: Types.SHOW_FAILURE,
-    payload: { error }
-  })
 }

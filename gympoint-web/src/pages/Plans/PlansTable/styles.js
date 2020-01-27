@@ -20,7 +20,7 @@ export const Table = styled.table`
   th {
     text-align: left;
     font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     color: ${({ theme }) => theme.inkDark};
     position: relative;
     transition: all 0.2s;
