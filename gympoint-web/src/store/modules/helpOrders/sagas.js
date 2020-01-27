@@ -4,7 +4,7 @@ import api from '~/services/api'
 
 import HelpOrdersActions, { Types as HelpOrdersTypes } from './actions'
 
-export function* getHelpOrders() {
+export function * getHelpOrders () {
   try {
     const { data } = yield call(api.getPendingHelpOrders)
 
@@ -14,11 +14,11 @@ export function* getHelpOrders() {
   }
 }
 
-export function* answerHelpOrder({ payload }) {
+export function * answerHelpOrder ({ payload }) {
   try {
-    yield call(api.answerHelpOrder, payload.id, payload.data)
+    const { data } = yield call(api.answerHelpOrder, payload.id, payload.data)
 
-    yield put(HelpOrdersActions.answerSuccess())
+    yield put(HelpOrdersActions.answerSuccess(data.id))
   } catch (err) {
     yield put(HelpOrdersActions.answerFailure())
   }
@@ -26,5 +26,5 @@ export function* answerHelpOrder({ payload }) {
 
 export default all([
   takeLatest(HelpOrdersTypes.GET_REQUEST, getHelpOrders),
-  takeLatest(HelpOrdersTypes.ANSWER_REQUEST, answerHelpOrder),
+  takeLatest(HelpOrdersTypes.ANSWER_REQUEST, answerHelpOrder)
 ])

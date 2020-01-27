@@ -27,8 +27,9 @@ export default {
     payload: { id, data }
   }),
 
-  answerSuccess: () => ({
-    type: Types.ANSWER_SUCCESS
+  answerSuccess: id => ({
+    type: Types.ANSWER_SUCCESS,
+    payload: { id }
   }),
 
   answerFailure: error => ({

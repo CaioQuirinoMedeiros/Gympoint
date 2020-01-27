@@ -16,10 +16,12 @@ function AnswerHelpOrder ({ id, close }) {
 
   const dispatch = useDispatch()
 
-  console.log(helpOrder)
-
   function handleAnswerSubmit () {
     dispatch(HelpOrdersActions.answerRequest(id, { answer }))
+  }
+
+  if (!helpOrder) {
+    close()
   }
 
   return (

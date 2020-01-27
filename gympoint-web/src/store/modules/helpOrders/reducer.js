@@ -28,11 +28,11 @@ export default function helpOrders (state = INITIAL_STATE, action) {
       }
       case HelpOrdersTypes.ANSWER_REQUEST: {
         draft.answerig = true
-        draft.data = state.data.filter(({ id }) => id !== action.payload.id)
         break
       }
       case HelpOrdersTypes.ANSWER_SUCCESS: {
         draft.answerig = false
+        draft.data = state.data.filter(({ id }) => id !== action.payload.id)
         break
       }
       case HelpOrdersTypes.ANSWER_FAILURE: {
