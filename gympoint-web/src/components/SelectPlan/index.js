@@ -18,6 +18,7 @@ function SelectPlan(props) {
       label='Plano'
       options={plans}
       isSearchable
+      isClearable
       placeholder='Selecione o plano'
       noOptionsMessage={() => 'Nenhum plano encontrado...'}
       {...props}

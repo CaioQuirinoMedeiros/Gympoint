@@ -18,6 +18,7 @@ function SelectStudent(props) {
       label='Aluno'
       options={students}
       isSearchable
+      isClearable
       placeholder='Buscar aluno'
       noOptionsMessage={() => 'Nenhum aluno encontrado...'}
       {...props}
