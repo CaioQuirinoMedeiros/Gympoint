@@ -1,5 +1,7 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import HelpOrdersActions from '~/store/modules/helpOrders/actions'
 
 import Modal from '~/components/Modal'
 
@@ -10,7 +12,15 @@ function AnswerHelpOrder ({ id, close }) {
     helpOrders.data.find(helpOrder => helpOrder.id === id)
   )
 
+  const [answer, setAnswer] = useState('')
+
+  const dispatch = useDispatch()
+
   console.log(helpOrder)
+
+  function handleAnswerSubmit () {
+    dispatch(HelpOrdersActions.answerRequest(id, { answer }))
+  }
 
   return (
     <Modal visible={!!id} close={close}>
@@ -22,9 +32,9 @@ function AnswerHelpOrder ({ id, close }) {
           rows={5}
           minLength={5}
           maxLength={300}
-          onChange={e => console.log(e.target.value)}
+          onChange={e => setAnswer(e.target.value)}
         />
-        <Button onClick={() => {}}>Responder aluno</Button>
+        <Button onClick={handleAnswerSubmit}>Responder aluno</Button>
       </Container>
     </Modal>
   )

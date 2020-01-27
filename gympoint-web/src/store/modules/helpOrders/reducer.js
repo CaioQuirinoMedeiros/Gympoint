@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   data: [],
   fetching: false,
   answering: false,
-  fetchingError: null,
+  fetchingError: null
 }
 
 export default function helpOrders (state = INITIAL_STATE, action) {
@@ -28,6 +28,7 @@ export default function helpOrders (state = INITIAL_STATE, action) {
       }
       case HelpOrdersTypes.ANSWER_REQUEST: {
         draft.answerig = true
+        draft.data = state.data.filter(({ id }) => id !== action.payload.id)
         break
       }
       case HelpOrdersTypes.ANSWER_SUCCESS: {

@@ -66,6 +66,7 @@ export default createGlobalStyle`
 
     &.no-scroll {
       overflow-y: hidden;
+      padding-right: 16px;
     }
   }
   
