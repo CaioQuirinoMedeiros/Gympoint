@@ -2,7 +2,7 @@ import { format, parseISO, addMonths as fnsAddMonths } from 'date-fns'
 import { pt } from 'date-fns/locale'
 
 export const formatDate = date => {
-  return format(date, "d 'de' MMMM 'de' yyyy", { locale: pt })
+  return format(date, "P", { locale: pt })
 }
 
 export const formatStringDate = date => {
