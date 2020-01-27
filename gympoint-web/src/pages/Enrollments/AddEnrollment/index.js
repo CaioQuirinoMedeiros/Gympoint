@@ -45,7 +45,11 @@ function AddEnrollment ({ history }) {
           </SaveButton>
         </HeaderActions>
       </HeaderContainer>
-      <EnrollmentForm onSubmit={handleSubmit} id='create-enrollment-form' />
+      <EnrollmentForm
+        onSubmit={handleSubmit}
+        id='create-enrollment-form'
+        initialValues={{ start_date: new Date() }}
+      />
     </Container>
   )
 }
