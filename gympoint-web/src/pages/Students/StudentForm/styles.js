@@ -15,7 +15,7 @@ export const Form = styled(FormikForm)`
 `
 
 export const Field = styled(FieldComponent)`
-  margin-top: 1rem;
+  margin-bottom: 0.8rem;
 `
 
 export const Currency = styled(CurrencyComponent)``

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { Form as FormikForm } from 'formik'
 
-import FieldComponent from '~/components/Inputs/Field'
+import SelectStudentComponent from '~/components/SelectStudent'
+import SelectPlanComponent from '~/components/SelectPlan'
 
 export const Form = styled(FormikForm)`
   flex: 1;
@@ -12,7 +13,13 @@ export const Form = styled(FormikForm)`
   padding: 2rem;
 `
 
-export const Field = styled(FieldComponent)``
+export const SelectStudent = styled(SelectStudentComponent)`
+  margin-bottom: 5px;
+`
+
+export const SelectPlan = styled(SelectPlanComponent)`
+  margin-bottom: 5px;
+`
 
 export const InputsWrapper = styled.div`
   margin-top: 1rem;

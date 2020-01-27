@@ -3,23 +3,22 @@ import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
 
 import { addMonths } from '~/utils/helpers/date'
+import enrollmentSchema from '~/utils/validations/enrollment'
 
 import Date from '~/components/Inputs/Date'
 import DateField from '~/components/Inputs/DateField'
 import Currency from '~/components/Inputs/Currency'
-import SelectStudent from '~/components/SelectStudent'
-import SelectPlan from '~/components/SelectPlan'
 
-import { Form, InputsWrapper } from './styles'
+import { Form, SelectStudent, SelectPlan, InputsWrapper } from './styles'
 
-function EnrollmentForm({ onSubmit, initialValues, ...rest }) {
+function EnrollmentForm ({ onSubmit, initialValues, ...rest }) {
   const plans = useSelector(({ plans }) => plans.data)
 
-  function renderForm(formik) {
+  function renderForm ({ values }) {
     const getPlan = planId => plans.find(plan => plan.id === planId)
 
     const getEndDate = () => {
-      const { start_date, plan_id } = formik.values
+      const { start_date, plan_id } = values
 
       if (start_date && plan_id) {
         const plan = getPlan(plan_id)
@@ -30,9 +29,10 @@ function EnrollmentForm({ onSubmit, initialValues, ...rest }) {
     }
 
     const getTotalPrice = () => {
-      const { plan_id } = formik.values
+      const { plan_id } = values
       if (plan_id) {
         const plan = getPlan(plan_id)
+
         return (plan.price * plan.duration) / 100
       } else {
         return null
@@ -63,7 +63,11 @@ function EnrollmentForm({ onSubmit, initialValues, ...rest }) {
   }
 
   return (
-    <Formik onSubmit={onSubmit} initialValues={initialValues || {}}>
+    <Formik
+      onSubmit={onSubmit}
+      initialValues={initialValues || {}}
+      validationSchema={enrollmentSchema}
+    >
       {renderForm}
     </Formik>
   )
