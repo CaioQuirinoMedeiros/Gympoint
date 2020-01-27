@@ -32,8 +32,9 @@ export function * deleteEnrollment ({ payload }) {
     yield call(api.deleteEnrollment, payload.id)
 
     yield put(EnrollmentsActions.deleteSuccess())
-  } catch (err) {
-    yield put(EnrollmentsActions.deleteFailure())
+  } catch ({ response }) {
+    const error = response.data?.error || messages.enrollments.deleteFailure
+    yield put(EnrollmentsActions.deleteFailure(error))
   }
 }
 
@@ -42,21 +43,34 @@ export function * editEnrollment ({ payload }) {
     const { data } = yield call(api.editEnrollment, payload.id, payload.data)
 
     yield put(EnrollmentsActions.editSuccess(data))
-  } catch (err) {
-    yield put(EnrollmentsActions.editFailure())
+  } catch ({ response }) {
+    const error = response.data?.error || messages.enrollments.editFailure
+    yield put(EnrollmentsActions.editFailure(error))
   }
 }
 
-export function createSuccessMessage ({ payload }) {
-  toast.success('Matrícula criada!')
+export function createSuccessMessage () {
+  toast.success(messages.enrollments.createSuccess)
 }
 
 export function createFailureMessage ({ payload }) {
   toast.error(payload.error)
 }
 
+export function editSuccessMessage () {
+  toast.success(messages.enrollments.editSuccess)
+}
+
+export function editFailureMessage ({ payload }) {
+  toast.error(payload.error)
+}
+
 export function deleteSuccessMessage () {
-  toast.success('Matrícula deletada com sucesso')
+  toast.success(messages.enrollments.deleteSuccess)
+}
+
+export function deleteFailureMessage ({ payload }) {
+  toast.error(payload.error)
 }
 
 export default all([
@@ -66,5 +80,8 @@ export default all([
   takeLatest(EnrollmentsTypes.EDIT_REQUEST, editEnrollment),
   takeLatest(EnrollmentsTypes.CREATE_SUCCESS, createSuccessMessage),
   takeLatest(EnrollmentsTypes.CREATE_FAILURE, createFailureMessage),
-  takeLatest(EnrollmentsTypes.DELETE_SUCCESS, deleteSuccessMessage)
+  takeLatest(EnrollmentsTypes.EDIT_SUCCESS, editSuccessMessage),
+  takeLatest(EnrollmentsTypes.EDIT_FAILURE, editFailureMessage),
+  takeLatest(EnrollmentsTypes.DELETE_SUCCESS, deleteSuccessMessage),
+  takeLatest(EnrollmentsTypes.DELETE_FAILURE, deleteFailureMessage)
 ])
