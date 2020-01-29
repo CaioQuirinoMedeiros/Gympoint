@@ -1,16 +1,15 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 
-import { Container, Logo } from './styles';
+import { Container, Logo, Input, Button } from './styles'
 
-function Login (props) {
-  console.log(props)
+function Login ({ navigation }) {
+  const [id, setId] = useState('')
+
   return (
     <Container>
       <Logo />
-      <TouchableOpacity onPress={() => props.navigation.navigate('App')}>
-        <Text>Navigate To App</Text>
-      </TouchableOpacity>
+      <Input autoFocus onChangeText={text => setId(text)} />
+      <Button onPress={() => alert(id)}>Entrar no sistema</Button>
     </Container>
   )
 }
