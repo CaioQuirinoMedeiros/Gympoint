@@ -3,7 +3,7 @@ import axios from 'axios'
 import apiConfig from '../config/api-config'
 
 const create = () => {
-  const api = axios.create({ ...apiConfig })
+  const api = axios.create(apiConfig)
 
   // Authentication
   const login = id => api.get(`students/${id}`)
