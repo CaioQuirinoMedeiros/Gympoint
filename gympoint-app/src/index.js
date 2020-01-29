@@ -1,24 +1,28 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import { ThemeProvider } from 'styled-components'
+import { Provider } from 'react-redux'
+import { NativeModules } from 'react-native'
 
+import './config/reactotron-config'
+
+import { store, persistor } from './store'
 import theme from './utils/theme'
 
 import Navigation from './navigation'
 
+
+const OPA = NativeModules.SourceCode.scriptURL
+
+console.log(OPA)
+
 export default function App () {
   return (
-    <ThemeProvider theme={theme}>
-      <Navigation />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <>
+          <Navigation />
+        </>
+      </ThemeProvider>
+    </Provider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
