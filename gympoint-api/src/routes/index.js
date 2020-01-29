@@ -16,7 +16,7 @@ routes.use(userRoutes);
 routes.use(sessionRoutes);
 routes.use(checkinRoutes);
 routes.use(helpOrderRoutes);
-routes.use(authMiddleware, studentRoutes);
+routes.use(studentRoutes);
 routes.use(authMiddleware, planRoutes);
 routes.use(authMiddleware, enrollmentRoutes);
 

@@ -1,15 +1,26 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import StudentController from '../app/controllers/StudentController';
+import authMiddleware from '../app/middlewares/auth'
 
-import validateStudentStore from '../app/validators/StudentStore';
+import StudentController from '../app/controllers/StudentController'
 
-const routes = new Router();
+import validateStudentStore from '../app/validators/StudentStore'
 
-routes.post('/students', validateStudentStore, StudentController.store);
-routes.get('/students', StudentController.index);
-routes.get('/students/:student_id', StudentController.show);
-routes.put('/students/:student_id', StudentController.update);
-routes.delete('/students/:student_id', StudentController.destroy);
+const routes = new Router()
 
-export default routes;
+routes.post(
+  '/students',
+  authMiddleware,
+  validateStudentStore,
+  StudentController.store
+)
+routes.get('/students', authMiddleware, StudentController.index)
+routes.get('/students/:student_id', StudentController.show)
+routes.put('/students/:student_id', authMiddleware, StudentController.update)
+routes.delete(
+  '/students/:student_id',
+  authMiddleware,
+  StudentController.destroy
+)
+
+export default routes
