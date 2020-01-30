@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import ButtonComponent from '../../components/Button'
+import CheckinCardComponent from './CheckinCard'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -15,9 +16,10 @@ export const CheckinButton = styled(ButtonComponent)``
 
 export const CheckinsList = styled.FlatList.attrs({
   contentContainerStyle: {
-    borderWidth: 1,
-    borderColor: 'orange'
+    paddingVertical: 5
   }
-})`
-  border: 1px solid blue;
+})``
+
+export const CheckinCard = styled(CheckinCardComponent)`
+  margin-vertical: 5;
 `

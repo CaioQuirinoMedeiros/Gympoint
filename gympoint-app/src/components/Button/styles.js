@@ -16,5 +16,5 @@ export const Container = styled(RectButton)`
 export const Text = styled(TextComponent)`
   color: #fff;
   font-weight: bold;
-  font-size: 16;
+  font-size: 17;
 `
