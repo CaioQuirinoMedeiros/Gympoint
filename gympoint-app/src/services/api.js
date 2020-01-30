@@ -14,7 +14,7 @@ const create = () => {
 
   // Help Orders
   const getHelpOrders = id => api.get(`students/${id}/help-orders`)
-  const createHelpOrders = (id, data) =>
+  const createHelpOrder = (id, data) =>
     api.post(`students/${id}/help-orders`, data)
 
   return {
@@ -24,7 +24,7 @@ const create = () => {
     createCheckin,
 
     getHelpOrders,
-    createHelpOrders
+    createHelpOrder
   }
 }
 

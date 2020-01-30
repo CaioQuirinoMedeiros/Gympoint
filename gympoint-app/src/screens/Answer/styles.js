@@ -10,6 +10,8 @@ export const Container = styled.View`
 export const Box = styled.View`
   background: ${({ theme }) => theme.white};
   border-radius: 4;
+  border-width: 1;
+  border-color: ${({ theme }) => theme.dim};
   padding: 12px 20px 0;
   margin: 20px;
 `

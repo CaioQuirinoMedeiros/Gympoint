@@ -24,10 +24,6 @@ function HelpOrders ({ navigation }) {
     getHelpOrders()
   }, [])
 
-  useEffect(() => {
-    console.log('helpOrders: ', helpOrders)
-  }, [helpOrders])
-
   function getHelpOrders () {
     dispatch(HelpOrdersActions.getRequest())
   }
@@ -37,7 +33,6 @@ function HelpOrders ({ navigation }) {
   }
 
   function handleHelpOrder (helpOrder) {
-    console.log(helpOrder)
     navigation.navigate('Answer', { helpOrder })
   }
 

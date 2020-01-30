@@ -1,25 +1,49 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-// import { Container } from './styles';
+import HelpOrdersActions from '../../store/modules/helpOrders/actions'
+import api from '../../services/api'
 
-function NewHelpOrder ({navigation}) {
+import Header from '../../components/Header'
+
+import { Container, Content, Input, Button } from './styles'
+
+function NewHelpOrder () {
+  const [question, setQuestion] = useState('')
+
+  const student = useSelector(({ auth }) => auth.student)
+  const creating = useSelector(({ helpOrders }) => helpOrders.creating)
+
+  const dispatch = useDispatch()
+
+  async function handleCreateHelpOrder () {
+    const { payload } = dispatch(HelpOrdersActions.createRequest({ question }))
+
+    try {
+      const { data } = await api.createHelpOrder(student?.id, payload.data)
+
+      dispatch(HelpOrdersActions.createSuccess(data))
+      setQuestion('')
+    } catch ({ response }) {
+      const error = response.data?.error || 'Erro ao buscar pedidos de auxílio'
+      dispatch(HelpOrdersActions.createFailure(error))
+    }
+  }
+
   return (
-    <View>
-      <Text>NOVO PEDIDO DE AUXILIO</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('HelpOrders')}>
-        <Text>Navigate toHelpOrders</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('NewHelpOrder')}>
-        <Text>Navigate to New Help Order</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Answer')}>
-        <Text>Navigate to Answer</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Checkins')}>
-        <Text>Navigate to Checkins</Text>
-      </TouchableOpacity>
-    </View>
+    <Container>
+      <Header canGoBack />
+      <Content>
+        <Input value={question} onChangeText={text => setQuestion(text)} />
+        <Button
+          onPress={handleCreateHelpOrder}
+          disabled={creating || question.length < 5}
+          loading={creating}
+        >
+          Enviar pedido
+        </Button>
+      </Content>
+    </Container>
   )
 }
 

@@ -25,7 +25,6 @@ function Answer ({ navigation }) {
     }
   }, [helpOrder.answerAt])
 
-  console.log(helpOrder)
   return (
     <Container>
       <Header canGoBack />

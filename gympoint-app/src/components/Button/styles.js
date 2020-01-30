@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-import { RectButton } from 'react-native-gesture-handler'
 
 import TextComponent from '../Text'
 
-export const Wrapper = styled(RectButton).attrs(({ disabled }) => ({
-  underlayColor: 'orange',
-  rippleColor: disabled ? 'transparent' : null
+export const Wrapper = styled.TouchableOpacity.attrs(({ disabled }) => ({
+  activeOpacity: disabled ? 1 : 0.75
 }))`
   background: ${({ theme }) => theme.primary};
   height: 46;
   padding-horizontal: 20;
   border-radius: 4;
+  elevation: ${({ disabled }) => (disabled ? 0 : 2)};
+  opacity: ${({ disabled }) => (disabled ? 0.85 : 1)};
 
   align-items: center;
   justify-content: center;

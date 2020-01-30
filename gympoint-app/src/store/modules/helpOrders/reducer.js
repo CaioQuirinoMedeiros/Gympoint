@@ -10,7 +10,8 @@ const INITIAL_STATE = {
 }
 
 export default function helpOrders (state = INITIAL_STATE, action) {
-  const {type, payload} = action
+  const { type, payload } = action
+
   return produce(state, draft => {
     switch (type) {
       case HelpOrdersTypes.GET_REQUEST: {
@@ -33,7 +34,7 @@ export default function helpOrders (state = INITIAL_STATE, action) {
       }
       case HelpOrdersTypes.CREATE_SUCCESS: {
         draft.creating = false
-        draft.data = [...state.data, payload.helpOrder]
+        draft.data = [payload.helpOrder, ...state.data]
         break
       }
       case HelpOrdersTypes.CREATE_FAILURE: {

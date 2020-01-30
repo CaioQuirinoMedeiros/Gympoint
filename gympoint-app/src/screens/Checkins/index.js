@@ -24,10 +24,6 @@ function Checkins () {
     getCheckins()
   }, [])
 
-  useEffect(() => {
-    console.log('checkins: ', checkins)
-  }, [checkins])
-
   function getCheckins () {
     dispatch(CheckinsActions.getRequest())
   }
@@ -40,7 +36,11 @@ function Checkins () {
     <Container>
       <Header />
       <Content>
-        <CheckinButton onPress={handleCheckin} loading={creating}>
+        <CheckinButton
+          onPress={handleCheckin}
+          loading={creating}
+          disabled={creating}
+        >
           Novo check-in
         </CheckinButton>
         <CheckinsList

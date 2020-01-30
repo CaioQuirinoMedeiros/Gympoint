@@ -45,4 +45,6 @@ export const Timestamp = styled(TextComponent)`
 
 export const Preview = styled(TextComponent).attrs({
   numberOfLines: 3
-})``
+})`
+  line-height: 24;
+`
