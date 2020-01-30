@@ -2,7 +2,15 @@ import React, { useMemo } from 'react'
 import { formatDistanceToNow, parseISO } from 'date-fns'
 import { pt } from 'date-fns/locale'
 
-import { Card, CardHeader, Status, Timestamp, Preview } from './styles'
+import {
+  Card,
+  CardHeader,
+  StatusWrapper,
+  CheckIcon,
+  Status,
+  Timestamp,
+  Preview
+} from './styles'
 
 function HelpOrderCard ({ helpOrder, ...rest }) {
   const answered = useMemo(() => {
@@ -19,9 +27,12 @@ function HelpOrderCard ({ helpOrder, ...rest }) {
   return (
     <Card {...rest}>
       <CardHeader>
-        <Status answered={answered}>
-          {answered ? 'Respondido' : 'Sem resposta'}
-        </Status>
+        <StatusWrapper>
+          <CheckIcon answered={answered}/>
+          <Status answered={answered}>
+            {answered ? 'Respondido' : 'Sem resposta'}
+          </Status>
+        </StatusWrapper>
         <Timestamp>{createdAt}</Timestamp>
       </CardHeader>
       <Preview>{helpOrder.question}</Preview>

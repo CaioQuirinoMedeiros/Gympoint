@@ -32,16 +32,20 @@ function HelpOrders ({ navigation }) {
     dispatch(HelpOrdersActions.getRequest())
   }
 
-  function handleCheckin () {
-    // navigation.navigate('NewHelpOrder')
-    getHelpOrders()
+  function handleNewHelpOrder () {
+    navigation.navigate('NewHelpOrder')
+  }
+
+  function handleHelpOrder (helpOrder) {
+    console.log(helpOrder)
+    navigation.navigate('Answer', { helpOrder })
   }
 
   return (
     <Container>
       <Header />
       <Content>
-        <HelpOrderButton onPress={handleCheckin} loading={creating}>
+        <HelpOrderButton onPress={handleNewHelpOrder} loading={creating}>
           Novo pedido de auxílio
         </HelpOrderButton>
         <HelpOrdersList
@@ -49,7 +53,12 @@ function HelpOrders ({ navigation }) {
           keyExtractor={item => `${item.id}`}
           refreshing={fetching}
           onRefresh={getHelpOrders}
-          renderItem={({ item }) => <HelpOrderCard helpOrder={item} />}
+          renderItem={({ item }) => (
+            <HelpOrderCard
+              helpOrder={item}
+              onPress={() => handleHelpOrder(item)}
+            />
+          )}
         />
       </Content>
     </Container>
