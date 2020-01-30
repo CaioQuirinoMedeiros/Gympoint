@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import theme from '../utils/theme'
 
 import Checkins from '../screens/Checkins'
-import HelpOrders from '../screens/HelpOrders'
+
+import HelpOrderNavigator from './helpOrdersNavigator'
 
 export default createBottomTabNavigator(
   {
@@ -19,7 +20,7 @@ export default createBottomTabNavigator(
       }
     },
     HelpOrders: {
-      screen: HelpOrders,
+      screen: HelpOrderNavigator,
       navigationOptions: {
         tabBarLabel: 'Pedir ajuda',
         tabBarIcon: ({ tintColor }) => (
@@ -33,7 +34,7 @@ export default createBottomTabNavigator(
       activeTintColor: theme.primary,
       inactiveTintColor: theme.dimDark,
       labelStyle: {
-        fontSize: 13,
+        fontSize: 13
       },
       style: {
         height: 60,

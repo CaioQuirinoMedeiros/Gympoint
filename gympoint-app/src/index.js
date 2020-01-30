@@ -16,7 +16,7 @@ export default function App () {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <>
-        <StatusBar barStyle="dark-content" />
+          <StatusBar barStyle='dark-content' />
           <Navigation />
         </>
       </ThemeProvider>

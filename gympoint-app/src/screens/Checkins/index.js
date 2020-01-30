@@ -1,12 +1,21 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-import { Container } from './styles'
+import Header from '../../components/Header'
+
+import { Container, Content, CheckinButton } from './styles'
 
 function Checkins () {
+  function handleCheckin () {
+    console.log('checkin')
+  }
+
   return (
     <Container>
-      <Text>CHECKINGS</Text>
+      <Header />
+      <Content>
+        <CheckinButton onPress={handleCheckin}>Novo check-in</CheckinButton>
+      </Content>
     </Container>
   )
 }

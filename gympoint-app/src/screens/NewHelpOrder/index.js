@@ -3,10 +3,10 @@ import { View, Text, TouchableOpacity } from 'react-native'
 
 // import { Container } from './styles';
 
-function HelpOrders ({navigation}) {
+function NewHelpOrder ({navigation}) {
   return (
     <View>
-      <Text>HELP ORDERS</Text>
+      <Text>NOVO PEDIDO DE AUXILIO</Text>
       <TouchableOpacity onPress={() => navigation.navigate('HelpOrders')}>
         <Text>Navigate toHelpOrders</Text>
       </TouchableOpacity>
@@ -20,8 +20,7 @@ function HelpOrders ({navigation}) {
         <Text>Navigate to Checkins</Text>
       </TouchableOpacity>
     </View>
-
   )
 }
 
-export default HelpOrders
+export default NewHelpOrder

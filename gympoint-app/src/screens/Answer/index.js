@@ -1,12 +1,15 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
+import Header from '../../components/Header'
+
 // import { Container } from './styles';
 
-function HelpOrders ({navigation}) {
+function Answer ({ navigation }) {
   return (
     <View>
-      <Text>HELP ORDERS</Text>
+      <Header canGoBack/>
+      <Text>RESPOSTA DO PEDIDO</Text>
       <TouchableOpacity onPress={() => navigation.navigate('HelpOrders')}>
         <Text>Navigate toHelpOrders</Text>
       </TouchableOpacity>
@@ -20,8 +23,7 @@ function HelpOrders ({navigation}) {
         <Text>Navigate to Checkins</Text>
       </TouchableOpacity>
     </View>
-
   )
 }
 
-export default HelpOrders
+export default Answer
