@@ -20,9 +20,10 @@ export default {
     }
   },
 
-  signInFailure: () => {
+  signInFailure: error => {
     return {
-      type: Types.SIGN_IN_FAILURE
+      type: Types.SIGN_IN_FAILURE,
+      payload: { error }
     }
   },
 

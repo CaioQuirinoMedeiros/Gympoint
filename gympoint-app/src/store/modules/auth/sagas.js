@@ -9,8 +9,9 @@ export function * signIn ({ payload }) {
     const { data } = yield call(api.login, payload.id)
 
     yield put(AuthActions.signInSuccess(data))
-  } catch (err) {
-    yield put(AuthActions.signInFailure())
+  } catch ({ response }) {
+    const error = response.data?.error || 'Não foi possível encontrar o aluno'
+    yield put(AuthActions.signInFailure(error))
   }
 }
 

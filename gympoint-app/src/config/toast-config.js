@@ -4,7 +4,7 @@ import theme from '../utils/theme'
 
 export default (success = true) => ({
   duration: Toast.durations.LONG,
-  position: Toast.positions.CENTER,
+  position: 200,
   opacity: 0.95,
   backgroundColor: success ? theme.positive : theme.negative
 })
