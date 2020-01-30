@@ -1,28 +1,47 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React, { useMemo } from 'react'
+import { formatDistanceToNow, parseISO } from 'date-fns'
+import { pt } from 'date-fns/locale'
 
 import Header from '../../components/Header'
 
-// import { Container } from './styles';
+import { Container, Box, Wrapper, Title, Timestamp, Content } from './styles'
 
 function Answer ({ navigation }) {
+  const helpOrder = navigation.getParam('helpOrder')
+
+  const createdAt = useMemo(() => {
+    return formatDistanceToNow(parseISO(helpOrder.createdAt), {
+      locale: pt,
+      addSuffix: true
+    })
+  }, [helpOrder.createdAt])
+
+  const answerAt = useMemo(() => {
+    if (answerAt) {
+      return formatDistanceToNow(parseISO(helpOrder.answer_at), {
+        locale: pt,
+        addSuffix: true
+      })
+    }
+  }, [helpOrder.answerAt])
+
+  console.log(helpOrder)
   return (
-    <View>
-      <Header canGoBack/>
-      <Text>RESPOSTA DO PEDIDO</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('HelpOrders')}>
-        <Text>Navigate toHelpOrders</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('NewHelpOrder')}>
-        <Text>Navigate to New Help Order</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Answer')}>
-        <Text>Navigate to Answer</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Checkins')}>
-        <Text>Navigate to Checkins</Text>
-      </TouchableOpacity>
-    </View>
+    <Container>
+      <Header canGoBack />
+      <Box>
+        <Wrapper>
+          <Title>Pergunta</Title>
+          <Timestamp>{createdAt}</Timestamp>
+        </Wrapper>
+        <Content>{helpOrder.question}</Content>
+        <Wrapper>
+          <Title>{helpOrder.answer ? 'Resposta' : 'Sem resposta'}</Title>
+          <Timestamp>{answerAt}</Timestamp>
+        </Wrapper>
+        <Content>{helpOrder.answer}</Content>
+      </Box>
+    </Container>
   )
 }
 
