@@ -1,15 +1,15 @@
 {
   "expo": {
     "name": "Gympoint",
+    "description": "Gerencie suas vistar à academia Gympoint e tire dúdivdas com nossa equipe de professores",
+    "backgroundColor": "#ffffff",
+    "primaryColor": "#ee4d64",
     "slug": "gympoint",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
+    "githubUrl": "https://github.com/CaioQuirinoMedeiros/Gympoint",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,11 +20,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.caioquirino.gympoint",
+      "versionCode": 1
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.caioquirino.gympoint",
+      "buildNumber": "1.0.0"
     }
   }
 }
