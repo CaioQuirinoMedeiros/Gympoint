@@ -1,18 +1,20 @@
 import React from 'react'
-import { ActivityIndicator } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { Container, Text } from './styles'
+import { Wrapper, Text, Loading } from './styles'
 
-function Button ({ children, loading, ...rest }) {
+function Button ({ children, disabled, onPress, loading, ...rest }) {
+  function handlePress () {
+    if (!disabled) {
+      onPress()
+    }
+  }
+
   return (
-    <Container {...rest}>
-      {loading ? (
-        <ActivityIndicator size='small' color='#fff' />
-      ) : (
-        <Text>{children}</Text>
-      )}
-    </Container>
+    <Wrapper onPress={disabled ? null : onPress} disabled={disabled} {...rest}>
+      <Text>{children}</Text>
+      {loading && <Loading size='small' color='#fff' />}
+    </Wrapper>
   )
 }
 

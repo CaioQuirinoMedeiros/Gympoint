@@ -12,7 +12,9 @@ export const Content = styled.View`
   margin: 20px;
 `
 
-export const CheckinButton = styled(ButtonComponent)``
+export const CheckinButton = styled(ButtonComponent)`
+  margin-bottom: 10;
+`
 
 export const CheckinsList = styled.FlatList.attrs({
   contentContainerStyle: {

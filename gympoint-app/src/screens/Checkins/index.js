@@ -1,5 +1,7 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import CheckinsActions from '../../store/modules/checkins/actions'
 
 import Header from '../../components/Header'
 
@@ -11,34 +13,41 @@ import {
   CheckinCard
 } from './styles'
 
-const data = [
-  {
-    id: 1,
-    createdAt: 'Há 4 dias'
-  },
-  {
-    id: 2,
-    createdAt: 'Há 1 semana'
-  },
-  {
-    id: 3,
-    createdAt: 'Ontem às 20h'
-  }
-]
-
 function Checkins () {
+  const checkins = useSelector(({ checkins }) => checkins.data)
+  const fetching = useSelector(({ checkins }) => checkins.fetching)
+  const creating = useSelector(({ checkins }) => checkins.creating)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getCheckins()
+  }, [])
+
+  useEffect(() => {
+    console.log('checkins: ', checkins)
+  }, [checkins])
+
+  function getCheckins () {
+    dispatch(CheckinsActions.getRequest())
+  }
+
   function handleCheckin () {
-    console.log('checkin')
+    dispatch(CheckinsActions.createRequest())
   }
 
   return (
     <Container>
       <Header />
       <Content>
-        <CheckinButton onPress={handleCheckin}>Novo check-in</CheckinButton>
+        <CheckinButton onPress={handleCheckin} loading={creating}>
+          Novo check-in
+        </CheckinButton>
         <CheckinsList
-          data={data}
+          data={checkins}
           keyExtractor={item => `${item.id}`}
+          refreshing={fetching}
+          onRefresh={getCheckins}
           renderItem={({ item }) => <CheckinCard checkin={item} />}
         />
       </Content>

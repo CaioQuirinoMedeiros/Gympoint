@@ -3,7 +3,6 @@ import { reactotronRedux } from 'reactotron-redux'
 import reactotronSaga from 'reactotron-redux-saga'
 
 if (__DEV__) {
-  console.log('TRYING TO CONNECT')
   const tron = Reactotron.configure({
     name: 'Gympoint',
     host: '192.168.15.146'

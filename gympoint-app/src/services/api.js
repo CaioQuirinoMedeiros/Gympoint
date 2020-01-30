@@ -10,7 +10,7 @@ const create = () => {
 
   // Checkins
   const getCheckins = id => api.get(`students/${id}/checkins`)
-  const createCheckins = id => api.post(`students/${id}/checkins`)
+  const createCheckin = id => api.post(`students/${id}/checkins`)
 
   // Help Orders
   const getHelpOrders = id => api.get(`students/${id}/help-orders`)
@@ -21,7 +21,7 @@ const create = () => {
     login,
 
     getCheckins,
-    createCheckins,
+    createCheckin,
 
     getHelpOrders,
     createHelpOrders
