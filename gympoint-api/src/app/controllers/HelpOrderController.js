@@ -42,7 +42,7 @@ class HelpOrderController {
     try {
       const helpOrders = await HelpOrder.findAll({
         where: { student_id },
-        order: ['created_at']
+        order: [['created_at', 'DESC']]
       })
 
       return res.status(200).send(helpOrders)
