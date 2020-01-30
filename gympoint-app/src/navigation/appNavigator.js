@@ -10,6 +10,17 @@ import HelpOrderNavigator from './helpOrdersNavigator'
 
 export default createBottomTabNavigator(
   {
+    Logout: {
+      screen: () => null,
+      navigationOptions: {
+        tabBarLabel: 'Sair',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name='arrow-back' color={tintColor} size={20} />
+        ),
+        tabBarOnPress: ({ navigation }) =>
+          navigation.navigate('SignIn', { shouldSignOut: true })
+      }
+    },
     Checkins: {
       screen: Checkins,
       navigationOptions: {
@@ -30,6 +41,7 @@ export default createBottomTabNavigator(
     }
   },
   {
+    initialRouteName: 'Checkins',
     tabBarOptions: {
       activeTintColor: theme.primary,
       inactiveTintColor: theme.dimDark,
