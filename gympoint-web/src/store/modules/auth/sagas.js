@@ -3,6 +3,7 @@ import { all, takeLatest, put, call } from 'redux-saga/effects'
 import api from '~/services/api'
 
 import AuthActions, { Types as AuthTypes } from './actions'
+import messages from '~/utils/constants/messages'
 
 export function * setAuthToken(token) {
   yield call(api.setAuthToken, token)
@@ -18,8 +19,9 @@ export function* signIn({ payload }) {
     
     yield call(setAuthToken, token)
     yield put(AuthActions.signInSuccess(token, user))
-  } catch (err) {
-    yield put(AuthActions.signInFailure())
+  } catch ({response}) {
+    const error = response?.data?.error || messages.auth.signInFailure()
+    yield put(AuthActions.signInFailure(error))
   }
 }
 

@@ -1,4 +1,7 @@
 export default {
+  auth: {
+    signInFailure: () => 'Erro ao fazer login, confira suas credenciais'
+  },
   students: {
     getFailure: () => 'Houve um erro ao buscar os aluno(a)s cadastrados',
     createSuccess: student => `Aluno(a) ${student.name} criado com sucesso!`,

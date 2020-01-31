@@ -1,6 +1,7 @@
 import { all, takeLatest } from 'redux-saga/effects'
 import { toast } from 'react-toastify'
 
+import { Types as AuthTypes } from '../auth/actions'
 import { Types as StudentsTypes } from '../students/actions'
 import { Types as PlansTypes } from '../plans/actions'
 import { Types as EnrollmentsTypes } from '../enrollments/actions'
@@ -53,6 +54,7 @@ export function failureMessage ({ payload }) {
 }
 
 export default all([
+  takeLatest(AuthTypes.SIGN_IN_FAILURE, failureMessage),
   takeLatest(StudentsTypes.GET_FAILURE, failureMessage),
   takeLatest(StudentsTypes.CREATE_SUCCESS, createStudentSuccessMessage),
   takeLatest(StudentsTypes.CREATE_FAILURE, failureMessage),
