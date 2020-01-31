@@ -4,6 +4,13 @@
 - [Web](./gympoint-web/README.md)
 - [Mobile](./gympoint-app/README.md)
 
+## Screenshots
+
+<img src="./screenshots/web-students.png" width="100%" />
+<br />
+<br />
+<img src="./screenshots/app-signIn.png" width="200" /> <img src="./screenshots/app-checkins.png" width="200" /> <img src="./screenshots/app-helpOrders.png" width="200" />
+
 ### About
 
 This project is the [challenge 09](https://github.com/Rocketseat/bootcamp-gostack-desafio-09) of [Rocketseat bootcamp course](https://rocketseat.com.br/bootcamp). It's a gym management application.
@@ -69,7 +76,9 @@ yarn install
 - It should looks like this: `CREATE_APP_API_URL=http://127.0.0.1:3333`
 
 ### :runner: Running
+
 run in development mode
+
 ```shell
 yarn start
 ```
@@ -109,4 +118,3 @@ expo install
 ```shell
 expo start
 ```
-
