@@ -6,10 +6,12 @@
 
 ## Screenshots
 
+<img src="./screenshots/app-signIn.png" width="200" /> <img src="./screenshots/app-checkins.png" width="200" /> <img src="./screenshots/app-helpOrders.png" width="200" />
+<br />
+<br />
 <img src="./screenshots/web-students.png" width="100%" />
 <br />
 <br />
-<img src="./screenshots/app-signIn.png" width="200" /> <img src="./screenshots/app-checkins.png" width="200" /> <img src="./screenshots/app-helpOrders.png" width="200" />
 
 ### About
 
