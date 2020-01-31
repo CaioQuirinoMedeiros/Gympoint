@@ -1,7 +1,8 @@
-# Gymint
-- [API](#api)
+# GYMPOINT
+
+- [API](./gympoint-api/README.md)
 - [Web](./gympoint-web/README.md)
-- [Mobile](#web)
+- [Mobile](./gympoint-app/README.md)
 
 ### About
 
@@ -72,3 +73,40 @@ run in development mode
 ```shell
 yarn start
 ```
+
+## APP
+
+### :arrow_down: Installing
+
+**Clone the repo and enter the app folder**
+
+```shell
+git clone https://github.com/CaioQuirinoMedeiros/Gympoint.git
+
+cd Gympoint/gympoint_app
+```
+
+**Install expo-cli**
+
+```shell
+npm i -g expo-cli
+```
+
+[reference to expo official documentation](https://docs.expo.io/versions/v36.0.0/get-started/installation)
+
+**Install dependencies**
+
+```shell
+expo install
+```
+
+### Running
+
+**Set the API_URL on `src/config/api-config`**
+
+**Run the app**
+
+```shell
+expo start
+```
+
