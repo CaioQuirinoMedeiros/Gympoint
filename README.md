@@ -1,6 +1,6 @@
 # Gymint
 - [API](#api)
-- [Web](./tree/master/gympoint-web)
+- [Web](./gympoint-web/README.md)
 - [Mobile](#web)
 
 ### About
