@@ -1,6 +1,6 @@
 # Gympoint - APP for customers
 
-<img src="../screenshots/app-signIn.png" width="160"> <img src="../screenshots/app-chckins.png" width="160"> <img src="../screenshots/app-helpOrders.png" width="160"> <img src="../screenshots/app-newHelpOrder.png" width="160"> <img src="../screenshots/app-answer.png" width="160">
+<img src="../screenshots/app-signIn.png" width="200"> <img src="../screenshots/app-checkins.png" width="200"> <img src="../screenshots/app-helpOrders.png" width="200"> <img src="../screenshots/app-newHelpOrder.png" width="200"> <img src="../screenshots/app-answer.png" width="200">
 
 ## Features
 - Login with student ID
