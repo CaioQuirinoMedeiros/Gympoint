@@ -20,6 +20,7 @@ export default {
   getRequest: () => ({
     type: Types.GET_REQUEST
   }),
+
   getSuccess: students => ({
     type: Types.GET_SUCCESS,
     payload: { students }
@@ -44,13 +45,15 @@ export default {
     type: Types.CREATE_FAILURE,
     payload: { error }
   }),
+
   deleteRequest: id => ({
     type: Types.DELETE_REQUEST,
     payload: { id }
   }),
 
-  deleteSuccess: () => ({
-    type: Types.DELETE_SUCCESS
+  deleteSuccess: id => ({
+    type: Types.DELETE_SUCCESS,
+    payload: { id }
   }),
 
   deleteFailure: error => ({

@@ -1,5 +1,4 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects'
-import { toast } from 'react-toastify'
 
 import api from '~/services/api'
 import messages from '~/utils/constants/messages'
@@ -11,8 +10,9 @@ export function * getEnrollments () {
     const { data } = yield call(api.getEnrollments)
 
     yield put(EnrollmentsActions.getSuccess(data))
-  } catch (err) {
-    yield put(EnrollmentsActions.getFailure())
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.enrollments.getFailure()
+    yield put(EnrollmentsActions.getFailure(error))
   }
 }
 
@@ -22,66 +22,40 @@ export function * createEnrollment ({ payload }) {
 
     yield put(EnrollmentsActions.createSuccess(data))
   } catch ({ response }) {
-    const error = response.data?.error || messages.enrollments.createFailure
+    const error = response?.data?.error || messages.enrollments.createFailure()
     yield put(EnrollmentsActions.createFailure(error))
   }
 }
 
 export function * deleteEnrollment ({ payload }) {
-  try {
-    yield call(api.deleteEnrollment, payload.id)
+  const { id } = payload
 
-    yield put(EnrollmentsActions.deleteSuccess())
+  try {
+    yield call(api.deleteEnrollment, id)
+
+    yield put(EnrollmentsActions.deleteSuccess(id))
   } catch ({ response }) {
-    const error = response.data?.error || messages.enrollments.deleteFailure
+    const error =
+      response?.data?.error || messages.enrollments.deleteFailure(id)
     yield put(EnrollmentsActions.deleteFailure(error))
   }
 }
 
 export function * editEnrollment ({ payload }) {
+  const { id, data: enrollmentData } = payload
   try {
-    const { data } = yield call(api.editEnrollment, payload.id, payload.data)
+    const { data } = yield call(api.editEnrollment, id, enrollmentData)
 
     yield put(EnrollmentsActions.editSuccess(data))
   } catch ({ response }) {
-    const error = response.data?.error || messages.enrollments.editFailure
+    const error = response?.data?.error || messages.enrollments.editFailure(id)
     yield put(EnrollmentsActions.editFailure(error))
   }
-}
-
-export function createSuccessMessage () {
-  toast.success(messages.enrollments.createSuccess)
-}
-
-export function createFailureMessage ({ payload }) {
-  toast.error(payload.error)
-}
-
-export function editSuccessMessage () {
-  toast.success(messages.enrollments.editSuccess)
-}
-
-export function editFailureMessage ({ payload }) {
-  toast.error(payload.error)
-}
-
-export function deleteSuccessMessage () {
-  toast.success(messages.enrollments.deleteSuccess)
-}
-
-export function deleteFailureMessage ({ payload }) {
-  toast.error(payload.error)
 }
 
 export default all([
   takeLatest(EnrollmentsTypes.GET_REQUEST, getEnrollments),
   takeLatest(EnrollmentsTypes.CREATE_REQUEST, createEnrollment),
   takeLatest(EnrollmentsTypes.DELETE_REQUEST, deleteEnrollment),
-  takeLatest(EnrollmentsTypes.EDIT_REQUEST, editEnrollment),
-  takeLatest(EnrollmentsTypes.CREATE_SUCCESS, createSuccessMessage),
-  takeLatest(EnrollmentsTypes.CREATE_FAILURE, createFailureMessage),
-  takeLatest(EnrollmentsTypes.EDIT_SUCCESS, editSuccessMessage),
-  takeLatest(EnrollmentsTypes.EDIT_FAILURE, editFailureMessage),
-  takeLatest(EnrollmentsTypes.DELETE_SUCCESS, deleteSuccessMessage),
-  takeLatest(EnrollmentsTypes.DELETE_FAILURE, deleteFailureMessage)
+  takeLatest(EnrollmentsTypes.EDIT_REQUEST, editEnrollment)
 ])

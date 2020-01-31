@@ -1,5 +1,4 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects'
-import { toast } from 'react-toastify'
 
 import api from '~/services/api'
 import messages from '~/utils/constants/messages'
@@ -11,8 +10,9 @@ export function * getPlans () {
     const { data } = yield call(api.getPlans)
 
     yield put(PlansActions.getSuccess(data))
-  } catch (err) {
-    yield put(PlansActions.getFailure())
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.plans.getFailure()
+    yield put(PlansActions.getFailure(error))
   }
 }
 
@@ -22,43 +22,40 @@ export function * createPlan ({ payload }) {
 
     yield put(PlansActions.createSuccess(data))
   } catch ({ response }) {
-    const error = response.data?.error || messages.plans.createFailure
+    const error = response?.data?.error || messages.plans.createFailure()
     yield put(PlansActions.createFailure(error))
   }
 }
 
 export function * deletePlan ({ payload }) {
-  try {
-    yield call(api.deletePlan, payload.id)
+  const { id } = payload
 
-    yield put(PlansActions.deleteSuccess())
-  } catch (err) {
-    yield put(PlansActions.deleteFailure())
+  try {
+    yield call(api.deletePlan, id)
+
+    yield put(PlansActions.deleteSuccess(id))
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.plans.deleteFailure(id)
+    yield put(PlansActions.deleteFailure(error))
   }
 }
 
 export function * editPlan ({ payload }) {
+  const { id, data: planData } = payload
+
   try {
-    const { data } = yield call(api.editPlan, payload.id, payload.data)
+    const { data } = yield call(api.editPlan, id, planData)
 
     yield put(PlansActions.editSuccess(data))
-  } catch (err) {
-    yield put(PlansActions.editFailure())
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.plans.editFailure(id)
+    yield put(PlansActions.editFailure(error))
   }
-}
-
-export function createSuccessMessage () {
-  toast.success('Plano criado com sucesso!')
-}
-export function createFailureMessage ({ payload }) {
-  toast.error(payload.error)
 }
 
 export default all([
   takeLatest(PlansTypes.GET_REQUEST, getPlans),
   takeLatest(PlansTypes.CREATE_REQUEST, createPlan),
   takeLatest(PlansTypes.DELETE_REQUEST, deletePlan),
-  takeLatest(PlansTypes.EDIT_REQUEST, editPlan),
-  takeLatest(PlansTypes.CREATE_SUCCESS, createSuccessMessage),
-  takeLatest(PlansTypes.CREATE_FAILURE, createFailureMessage)
+  takeLatest(PlansTypes.EDIT_REQUEST, editPlan)
 ])

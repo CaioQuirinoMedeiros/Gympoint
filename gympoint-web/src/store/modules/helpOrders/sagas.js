@@ -1,6 +1,7 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects'
 
 import api from '~/services/api'
+import messages from '~/utils/constants/messages'
 
 import HelpOrdersActions, { Types as HelpOrdersTypes } from './actions'
 
@@ -9,18 +10,22 @@ export function * getHelpOrders () {
     const { data } = yield call(api.getPendingHelpOrders)
 
     yield put(HelpOrdersActions.getSuccess(data))
-  } catch (err) {
-    yield put(HelpOrdersActions.getFailure())
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.helpOrders.getFailure()
+    yield put(HelpOrdersActions.getFailure(error))
   }
 }
 
 export function * answerHelpOrder ({ payload }) {
+  const { id, data: answerData } = payload
+
   try {
-    const { data } = yield call(api.answerHelpOrder, payload.id, payload.data)
+    const { data } = yield call(api.answerHelpOrder, id, answerData)
 
     yield put(HelpOrdersActions.answerSuccess(data.id))
-  } catch (err) {
-    yield put(HelpOrdersActions.answerFailure())
+  } catch ({ response }) {
+    const error = response?.data?.error || messages.helpOrders.answerFailure(id)
+    yield put(HelpOrdersActions.answerFailure(error))
   }
 }
 

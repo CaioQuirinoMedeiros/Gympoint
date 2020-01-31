@@ -17,6 +17,7 @@ export default {
   getRequest: () => ({
     type: Types.GET_REQUEST
   }),
+
   getSuccess: plans => ({
     type: Types.GET_SUCCESS,
     payload: { plans }
@@ -47,8 +48,9 @@ export default {
     payload: { id }
   }),
 
-  deleteSuccess: () => ({
-    type: Types.DELETE_SUCCESS
+  deleteSuccess: id => ({
+    type: Types.DELETE_SUCCESS,
+    payload: { id }
   }),
 
   deleteFailure: error => ({

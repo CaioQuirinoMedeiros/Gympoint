@@ -5,6 +5,7 @@ import studentsSagas from './students/sagas'
 import plansSagas from './plans/sagas'
 import enrollmentsSagas from './enrollments/sagas'
 import helpOrdersSagas from './helpOrders/sagas'
+import toastSagas from './toast/sagas'
 
 export default function * rootSaga () {
   return yield all([
@@ -12,6 +13,7 @@ export default function * rootSaga () {
     studentsSagas,
     plansSagas,
     enrollmentsSagas,
-    helpOrdersSagas
+    helpOrdersSagas,
+    toastSagas
   ])
 }

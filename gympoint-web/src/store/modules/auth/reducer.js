@@ -27,18 +27,6 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = false
         break
       }
-      case AuthTypes.SIGN_UP_REQUEST: {
-        draft.loading = true
-        break
-      }
-      case AuthTypes.SIGN_UP_SUCCESS: {
-        draft.loading = false
-        break
-      }
-      case AuthTypes.SIGN_UP_FAILURE: {
-        draft.loading = false
-        break
-      }
       case AuthTypes.SIGN_OUT: {
         draft.signed = false
         draft.user = null
