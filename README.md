@@ -1,7 +1,17 @@
-# Gymint
-- [API](#api)
-- [Web](#web)
-- [Mobile](#web)
+# GYMPOINT
+
+- [API](./gympoint-api/README.md)
+- [Web](./gympoint-web/README.md)
+- [Mobile](./gympoint-app/README.md)
+
+## Screenshots
+
+<img src="./screenshots/app-signIn.png" width="200" /> <img src="./screenshots/app-checkins.png" width="200" /> <img src="./screenshots/app-helpOrders.png" width="200" />
+<br />
+<br />
+<img src="./screenshots/web-students.png" width="100%" />
+<br />
+<br />
 
 ### About
 
@@ -68,7 +78,45 @@ yarn install
 - It should looks like this: `CREATE_APP_API_URL=http://127.0.0.1:3333`
 
 ### :runner: Running
+
 run in development mode
+
 ```shell
 yarn start
+```
+
+## APP
+
+### :arrow_down: Installing
+
+**Clone the repo and enter the app folder**
+
+```shell
+git clone https://github.com/CaioQuirinoMedeiros/Gympoint.git
+
+cd Gympoint/gympoint_app
+```
+
+**Install expo-cli**
+
+```shell
+npm i -g expo-cli
+```
+
+[reference to expo official documentation](https://docs.expo.io/versions/v36.0.0/get-started/installation)
+
+**Install dependencies**
+
+```shell
+expo install
+```
+
+### Running
+
+**Set the API_URL on `src/config/api-config`**
+
+**Run the app**
+
+```shell
+expo start
 ```
