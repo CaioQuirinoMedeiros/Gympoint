@@ -34,5 +34,7 @@ export const Timestamp = styled(TextComponent)`
 `
 
 export const Content = styled(TextComponent)`
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  line-height: 24;
+
 `
