@@ -21,7 +21,7 @@
 
 It's deployed on netlify, check it out:
 
-- [gympoint.com](https://gympoint-netlify.com)
+- [gympoint.com](https://gympoint.netlify.com)
   - email: `admin@gympoint.com`
   - password: `123456`
 

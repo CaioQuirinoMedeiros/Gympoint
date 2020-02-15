@@ -29,6 +29,11 @@ Both web and mobile application consumes the same API, to see all the parts work
 
 [API Documentation](https://documenter.getpostman.com/view/7189884/SWLb9pCR?version=latest)
 
+## Try it out
+
+It's deployed on heroku, check it out:
+[gympoint-api-caio.herokuapp.com](http://gympoint-api-caio.herokuapp.com)
+
 ### :arrow_down: Installing
 
 **Install the dependencies**
@@ -63,6 +68,14 @@ yarn dev
 
 ## WEB
 
+### Try it out
+
+It's deployed on netlify, check it out:
+
+- [gympoint.com](https://gympoint.netlify.com)
+  - email: `admin@gympoint.com`
+  - password: `123456`
+
 ### :arrow_down: Installing
 
 **Install the dependencies**
@@ -86,6 +99,13 @@ yarn start
 ```
 
 ## APP
+
+### Try it out (Android only for now)
+
+You can install the app on your device to test it out:
+
+1. [Install with Expo](https://exp.host/@caioquirino/gympoint)
+2. [Download the apk](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40caioquirino/gympoint-5666a28719f6430d8c8c3ce56d01d599-signed.apk)
 
 ### :arrow_down: Installing
 
