@@ -22,7 +22,6 @@ function Login() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log("Tela de login: ", {REACT_APP_ENVIRONMENT: process.env.REACT_APP_ENVIRONMENT})
     if (process.env.REACT_APP_ENVIRONMENT === 'demo') {
       toast(
         () => (
