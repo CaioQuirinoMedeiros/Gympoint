@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Form as FormikForm} from 'formik'
+import { Form as FormikForm } from 'formik'
 
 import FieldComponent from '~/components/Inputs/Field'
 import FullButtonComponent from '~/components/Buttons/FullButton'
@@ -38,4 +38,31 @@ export const Field = styled(FieldComponent)`
 export const Button = styled(FullButtonComponent)`
   margin-top: 1rem;
   margin-bottom: 1rem;
+`
+
+export const TesteToast = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  span {
+    color: #666;
+    margin-bottom: 2px;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.primary};
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 2rem;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `
