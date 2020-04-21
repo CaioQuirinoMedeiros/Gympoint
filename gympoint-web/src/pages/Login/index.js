@@ -1,16 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Formik } from 'formik'
+import { toast } from 'react-toastify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import loginSchema from '~/utils/validations/login'
 import AuthActions from '~/store/modules/auth/actions'
 
-import { Container, LoginForm, Title, Field, Button } from './styles'
+import {
+  Container,
+  LoginForm,
+  Title,
+  Field,
+  Button,
+  TesteToast
+} from './styles'
 
 function Login() {
   const loading = useSelector(({ auth }) => auth.loading)
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (process.env.REACT_APP_ENVIRONMENT) {
+      toast(
+        () => (
+          <TesteToast>
+            <p>AMBIENTE DE TESTE</p>
+            <span>
+              <strong>E-mail:</strong> admin@gympoint.com
+            </span>
+            <span>
+              <strong>Senha:</strong> 123456
+            </span>
+
+            <a
+              href='https://github.com/CaioQuirinoMedeiros/Gympoint'
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              Veja no GitHub{' '}
+              <FontAwesomeIcon icon='chevron-right' style={{ fontSize: 14 }} />
+            </a>
+          </TesteToast>
+        ),
+        { autoClose: false }
+      )
+    }
+  }, [])
 
   function handleLogin({ email, password }) {
     dispatch(AuthActions.signInRequest(email, password))
