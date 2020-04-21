@@ -82,3 +82,5 @@ yarn start
 <img src="../screenshots/web-editEnrollment.png" width="100%" /><br /><br />
 <img src="../screenshots/web-helpOrders.png" width="100%" /><br /><br />
 <img src="../screenshots/web-answerHelpOrder.png" width="100%" /><br /><br />
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/57786671-cacb-47ed-897f-2cb2fc3e8ca7/deploy-status)](https://app.netlify.com/sites/gympoint/deploys)
